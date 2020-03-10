@@ -1,0 +1,14 @@
+
+
+- instalar el paquete de apache
+composer require symfony/apache-pack 
+
+- Crear controladores
+php bin/console make:controller ServiceController
+php bin/console make:controller UserController
+
+- esto crea los controladores y una plantilla a cada uno 
+
+- eliminar las anotaciones en los archivos de controladores y hacerlas en el ficehro de routing: routes.yaml
+
+
