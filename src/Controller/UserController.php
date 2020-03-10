@@ -4,6 +4,11 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
+use App\Entity\User;
+use App\Form\RegisterType;
 
 class UserController extends AbstractController
 {
@@ -16,10 +21,13 @@ class UserController extends AbstractController
 //            'controller_name' => 'UserController',
 //        ]);
 //    }
-    public function register()
+    public function register(Request $request)
     {
-        return $this->render('user/index.html.twig', [
+        $user = new User();
+        $form = $this->createForm(RegisterType::class, $user);
 
+        return $this->render('user/register.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }
