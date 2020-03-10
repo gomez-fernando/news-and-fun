@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+// configurar la user interface
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -12,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -43,6 +45,13 @@ class User
      * @ORM\Column(name="surname", type="string", length=200, nullable=true)
      */
     private $surname;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="nick", type="string", length=200, nullable=true)
+     */
+    private $nick;
 
     /**
      * @var string|null
@@ -117,6 +126,18 @@ class User
         return $this;
     }
 
+    public function getnick(): ?string
+    {
+        return $this->nick;
+    }
+
+    public function setNick(?string $nick): self
+    {
+        $this->nick = $nick;
+
+        return $this;
+    }
+
     public function getEmail(): ?string
     {
         return $this->email;
@@ -141,12 +162,14 @@ class User
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+//    public function getCreatedAt(): ?\DateTimeInterface  Original tipado
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+//    public function setCreatedAt(?\DateTimeInterface $createdAt): self   Original tipado
+    public function setCreatedAt($createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -160,4 +183,32 @@ class User
     {
         return $this->services;
     }
+
+//    añadir métodos necesarios para la interfaz UserInterface
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+        return $this->email;
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return null;
+    }
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+//        para traer el role desde la db
+//        return $this->getRole();
+//        en este caso solo usamos un rol fijo
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
 }

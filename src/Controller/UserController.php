@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\User;
 use App\Form\RegisterType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController
 {
@@ -21,10 +22,37 @@ class UserController extends AbstractController
 //            'controller_name' => 'UserController',
 //        ]);
 //    }
-    public function register(Request $request)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
+        // crear formulario
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
+
+//        rellenar el objeto con los datos del formulaio
+        $form->handleRequest($request);
+
+//        comprobar si se ha enviado el formulario
+        if ($form->isSubmitted()){
+//            var_dump($user);
+//            die();
+//            modificar el objeto para guardarlo
+            $user->setRole('ROLE_USER');
+//            $date_now = (new \DateTime())->format('d-m-Y H:i:s');
+
+            $user->setCreatedAt(new \DateTime('now'));
+
+//            cifrar contraseña
+            $encoded = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($encoded);
+
+//            var_dump($user);
+//            guardar usuario
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('services');
+        }
 
         return $this->render('user/register.html.twig', [
             'form' => $form->createView()

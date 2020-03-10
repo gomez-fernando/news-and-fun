@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` varchar(50) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `surname` varchar(200) DEFAULT NULL,
-  `username` varchar(200) DEFAULT NULL,
+  `nick` varchar(200) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `role`, `name`, `surname`, `username`, `email`, `password`, `created_at`) VALUES
+INSERT INTO `users` (`id`, `role`, `name`, `surname`, `nick`, `email`, `password`, `created_at`) VALUES
 (1, 'ROLE_USER', 'Javier', 'Estrada', '@user1', 'user1@user1.com', '$2y$12$/KpQiMmVlvKXFTCZOQxtX.rilC7/bAONlGKtJ7vZJWv/KrM9EwSbu', '2020-03-04 21:13:35'),
 (2, 'ROLE_USER', 'Miguel', 'Ruiz', '@user2', 'user2@user2.com', '$2y$12$/KpQiMmVlvKXFTCZOQxtX.rilC7/bAONlGKtJ7vZJWv/KrM9EwSbu', '2020-03-04 21:13:35'),
 (3, 'ROLE_USER', 'Alvaro', 'Miranda', '@user3', 'user3@user3.com', '$2y$12$/KpQiMmVlvKXFTCZOQxtX.rilC7/bAONlGKtJ7vZJWv/KrM9EwSbu', '2020-03-04 21:13:36');
