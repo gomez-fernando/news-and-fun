@@ -32,7 +32,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
 //        comprobar si se ha enviado el formulario
-        if ($form->isSubmitted()){
+        if ($form->isSubmitted()  &&  $form->isValid()){
 //            var_dump($user);
 //            die();
 //            modificar el objeto para guardarlo

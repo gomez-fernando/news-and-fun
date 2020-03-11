@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 // configurar la user interface
 use Symfony\Component\Security\Core\User\UserInterface;
+//para validar los formularios
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -36,6 +38,7 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $name;
 
@@ -43,6 +46,8 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="surname", type="string", length=200, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $surname;
 
@@ -50,6 +55,8 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="nick", type="string", length=200, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $nick;
 
@@ -57,12 +64,17 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *     message = "El email '{{ value }} no es válido",
+     *     checkMX = true
+     * )
      */
     private $email;
 
     /**
      * @var string|null
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="password", type="string", length=255, nullable=true)
      */
     private $password;
