@@ -3,7 +3,7 @@
 #    controller: App\Controller\DefaultController::index
 
 services:
-  path: /services
+  path: /
   controller: App\Controller\ServiceController::index
 
 register:
