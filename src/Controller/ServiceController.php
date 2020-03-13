@@ -22,15 +22,15 @@ class ServiceController extends AbstractController
 //        }
 //        ----------------------------
 //            todos los usuarios y sus servicios
-        $user_repo = $this->getDoctrine()->getRepository(User::class);
-        $users = $user_repo->findAll();
-        foreach($users as $user){
-            echo "<h1>{$user->getName()} {$user->getSurname()}</h1>";
+        // $user_repo = $this->getDoctrine()->getRepository(User::class);
+        // $users = $user_repo->findAll();
+        // foreach($users as $user){
+        //     echo "<h1>{$user->getName()} {$user->getSurname()}</h1>";
 
-            foreach ($user->getServices() as $service){
-                echo $service->getRssService().'<br>';
-            }
-        }
+        //     foreach ($user->getServices() as $service){
+        //         echo $service->getRssService().'<br>';
+        //     }
+        // }
 
         return $this->render('service/index.html.twig', [
             'controller_name' => 'ServiceController',
