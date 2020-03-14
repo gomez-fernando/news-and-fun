@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
+// añadir estas después de hacer el regenerate
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
-// configurar la user interface
+// añadir para la funcionalidad del login
 use Symfony\Component\Security\Core\User\UserInterface;
-//para validar los formularios
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -38,7 +38,6 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="name", type="string", length=100, nullable=true)
-     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $name;
 
@@ -46,8 +45,6 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="surname", type="string", length=200, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $surname;
 
@@ -55,8 +52,6 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="nick", type="string", length=200, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $nick;
 
@@ -64,17 +59,12 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Email(
-     *     message = "El email '{{ value }} no es válido",
-     *     checkMX = true
-     * )
      */
     private $email;
 
     /**
      * @var string|null
-     * @Assert\NotBlank
+     *
      * @ORM\Column(name="password", type="string", length=255, nullable=true)
      */
     private $password;
@@ -86,9 +76,9 @@ class User implements UserInterface
      */
     private $createdAt;
 
-    // variable para guardar los servicios rss del usuario
+    // para obtener todos los servicios de un usuario
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Service", mappedBy="user")
+     * ORM\OneToMany(targetEntity="App\Entity\Service", mappedBy="user")
      */
     private $services;
 
@@ -138,7 +128,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getnick(): ?string
+    public function getNick(): ?string
     {
         return $this->nick;
     }
@@ -174,14 +164,12 @@ class User implements UserInterface
         return $this;
     }
 
-//    public function getCreatedAt(): ?\DateTimeInterface  Original tipado
-    public function getCreatedAt()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-//    public function setCreatedAt(?\DateTimeInterface $createdAt): self   Original tipado
-    public function setCreatedAt($createdAt): self
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -189,38 +177,33 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Service[]
+     * @return Collection[Service]
      */
     public function getServices(): Collection
     {
         return $this->services;
     }
 
-//    añadir métodos necesarios para la interfaz UserInterface
+
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
         return $this->email;
     }
 
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
         return null;
     }
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
-//        para traer el role desde la db
-//        return $this->getRole();
-//        en este caso solo usamos un rol fijo
+        // haciendo un get conseguimos el role desde la DB si hubiera
+        // return $this->getRole();
+
         return array('ROLE_USER');
     }
 
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
     }
-
 }

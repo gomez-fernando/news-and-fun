@@ -14,12 +14,13 @@ class ServiceController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         // prueba de entidades y relaciones
-//        $service_repo = $this->getDoctrine()->getRepository(Service::class);
-//        $services = $service_repo->findAll();
-//
-//        foreach ($services as $service){
-//            echo $service->getUser()->getName().'--->'.$service->getRssService().'<br>';
-//        }
+        $service_repo = $this->getDoctrine()->getRepository(Service::class);
+        // $services = $service_repo->findAll();
+        $services = $service_repo->findBy([], ['id' => 'DESC']);
+
+        //    foreach ($services as $service){
+        //        echo $service->getUser()->getName().'--->'.$service->getRssService().'<br>';
+        //    }
 //        ----------------------------
 //            todos los usuarios y sus servicios
         // $user_repo = $this->getDoctrine()->getRepository(User::class);
@@ -32,8 +33,12 @@ class ServiceController extends AbstractController
         //     }
         // }
 
+        // return $this->render('service/index.html.twig', [
+        //     'controller_name' => 'ServiceController',
+        // ]);
+
         return $this->render('service/index.html.twig', [
-            'controller_name' => 'ServiceController',
+            'services' => $services,
         ]);
     }
 }

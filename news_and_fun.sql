@@ -35,7 +35,8 @@ DROP TABLE IF EXISTS `services`;
 CREATE TABLE IF NOT EXISTS `services` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `user_id` int(255) NOT NULL,
-  `rss_service` varchar(500) DEFAULT NULL,
+  `name` varchar(150) NOT NULL,
+  `url_service` varchar(500) DEFAULT NULL,
   `description` varchar(520) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -47,11 +48,11 @@ CREATE TABLE IF NOT EXISTS `services` (
 -- Volcado de datos para la tabla `services`
 --
 
-INSERT INTO `services` (`id`, `user_id`, `rss_service`, `description`, `created_at`) VALUES
-(1, 1, 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(2, 2, 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(3, 3, 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(4, 1, 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
+INSERT INTO `services` (`id`, `user_id`, `name`, `url_service`, `description`, `created_at`) VALUES
+(1, 1, 'noticias', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(2, 2, 'música top', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(3, 3, 'deportes', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(4, 1, 'brico consejos', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
 
 -- --------------------------------------------------------
 

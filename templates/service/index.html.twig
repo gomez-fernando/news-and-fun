@@ -1,20 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ServiceController!{% endblock %}
+{% block title %}Inicio
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<h2>Todas las suscripciones de los usuarios</h2>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/news-and-fun/src/Controller/ServiceController.php'|file_link(0) }}">src/Controller/ServiceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/news-and-fun/templates/service/index.html.twig'|file_link(0) }}">templates/service/index.html.twig</a></code></li>
-    </ul>
-</div>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Nombre</th>
+			<th scope="col">Descripción</th>
+			<th scope="col"></th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for service in services %}
+		<tr>
+			<th scope="row"><a title="Abrir" href="{{ service.urlService }}">{{ service.name }}</a></th>
+			<td>{{ service.description }}</td>
+			{# <td><a href="{{ service.urlService }}">Abrir</a></td> #}
+			<td><a href="{{ service.urlService }}">Editar</a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+
+{# <div class="row justify-content-center h-100">
+			<div class="col-sm-8 align-self-center text-center">
+				<div class="card shadow">
+					<div class="card-body">
+						<h1 class="m-5">Bienvenido/a</h1>
+		
+						<h2>Aquí se mostrarán las noticias</h2>
+					</div>
+				</div>
+			</div>
+		</div> #}
+
+
+{# <style>
+		.bloque {
+			display: flex;
+			background-color: #dfde79;
+			place-items: center;
+			justify-content: center;
+			height: 93vh;
+		}
+
+		.elemento {
+			background-color: white;
+			border-radius: 10px;
+			box-shadow: saddlebrown 0 0 10px;
+			padding: 20px;
+		}
+	</style>
+
+	<div class="bloque">
+		<div class="elemento">
+			<h1 class="">Bienvenido/a</h1>
+
+			<h2>Aquí se mostrarán las noticias</h2>
+		</div>
+	</div> #}
+
 {% endblock %}

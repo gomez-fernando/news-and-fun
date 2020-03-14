@@ -22,11 +22,18 @@ class Service
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="name", type="string", nullable=false)
+     */
+    private $name;
+
+    /**
      * @var string|null
      *
-     * @ORM\Column(name="rss_service", type="string", length=500, nullable=true)
+     * @ORM\Column(name="url_service", type="string", length=500, nullable=true)
      */
-    private $rssService;
+    private $urlService;
 
     /**
      * @var string|null
@@ -45,7 +52,7 @@ class Service
     /**
      * @var \User
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tasks")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="services")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
@@ -57,14 +64,26 @@ class Service
         return $this->id;
     }
 
-    public function getRssService(): ?string
+    public function getName(): ?string
     {
-        return $this->rssService;
+        return $this->name;
     }
 
-    public function setRssService(?string $rssService): self
+    public function setName(string $name): self
     {
-        $this->rssService = $rssService;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getUrlService(): ?string
+    {
+        return $this->urlService;
+    }
+
+    public function setUrlService(?string $urlService): self
+    {
+        $this->urlService = $urlService;
 
         return $this;
     }
@@ -98,7 +117,7 @@ class Service
         return $this->user;
     }
 
-    public function setUser(?Users $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
