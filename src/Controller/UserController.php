@@ -40,7 +40,7 @@ class UserController extends AbstractController
             $user->setRole('ROLE_USER');
 //            $date_now = (new \DateTime())->format('d-m-Y H:i:s');
 
-            $user->setCreatedAt(new \DateTime('now'));
+            $user->setCreatedAt(new \Datetime('now'));
 
 //            cifrar contraseña
             $encoded = $encoder->encodePassword($user, $user->getPassword());

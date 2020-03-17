@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Service;
 use App\Entity\User;
+use App\Form\ServiceType;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class ServiceController extends AbstractController
 {
@@ -54,8 +56,30 @@ class ServiceController extends AbstractController
         ]);
     }
 
-    public function creation(Request $request)
+    public function creation(Request $request, UserInterface $user)
     {
-        return $this->render('service/creation.html.twig');
+        $service = new Service();
+        $form = $this->createForm(ServiceType::class, $service);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // var_dump($service);
+            $service->setCreatedAt(new \Datetime('now'));
+            // var_dump($user);
+            $service->setUser($user);
+            // var_dump($service);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($service);
+            $em->flush();
+
+            return $this->redirect(
+                $this->generateUrl('service_detail', ['id' => $service->getId()])
+            );
+        }
+
+        return $this->render('service/creation.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }
