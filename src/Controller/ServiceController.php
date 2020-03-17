@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Service;
 use App\Entity\User;
 
@@ -40,5 +41,21 @@ class ServiceController extends AbstractController
         return $this->render('service/index.html.twig', [
             'services' => $services,
         ]);
+    }
+
+    public function detail(Service $service)
+    {
+        if (!$service) {
+            return $this->redirectToRoute('services');
+        }
+
+        return $this->render('service/detail.html.twig', [
+            'service' => $service
+        ]);
+    }
+
+    public function creation(Request $request)
+    {
+        return $this->render('service/creation.html.twig');
     }
 }
