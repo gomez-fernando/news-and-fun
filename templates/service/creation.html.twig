@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Añadir canal de noticias
+{% block title %}
+	{% if edit is defined %}
+		Editar suscripción
+	{% else %}
+		Añadir suscripción
+	{% endif %}
 {% endblock %}
 
 {% block body %}
 
-	<h2>Añadir canal de noticias</h2>
+	<h2>
+		{% if edit is defined %}
+			Editar suscripción
+		{% else %}
+			Añadir suscripción
+		{% endif %}
+	</h2>
 	{{ form_start(form) }}
 	{{ form_widget(form) }}
 	{{ form_end(form) }}

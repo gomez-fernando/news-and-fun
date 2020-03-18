@@ -104,10 +104,34 @@ class ServiceController extends AbstractController
 //        ]);
     }
 
-    public function edit(Request $request, Service $service){
+    public function edit(Request $request, UserInterface $user, Service $service)
+    {
+        // var_dump($service);
+        if (!$user || $user->getId() != $service->getUser()->getId()) {
+            return $this->redirectToRoute('services');
+        }
+        $form = $this->createForm(ServiceType::class, $service);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // var_dump($service);
+            // $service->setCreatedAt(new \Datetime('now'));
+            // var_dump($user);
+            // $service->setUser($user);
+            // var_dump($service);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($service);
+            $em->flush();
+
+            return $this->redirect(
+                $this->generateUrl('service_detail', ['id' => $service->getId()])
+            );
+        }
 
         return $this->render('service/creation.html.twig', [
-            'edit' => true
+            'edit' => true,
+            'form' => $form->createView()
         ]);
     }
 }

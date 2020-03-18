@@ -14,7 +14,7 @@
                 <th scope="row"><a title="Abrir" href="{{ service.urlService }}">{{ service.name }}</a></th>
                 <td><a href="{{ path('service_detail', {'id':service.id}) }}">{{ service.description }}</a></td>
                 {# <td><a href="{{ service.urlService }}">Abrir</a></td> #}
-                <td><a href="{{ service.urlService }}">Editar</a></td>
+                <td><a href="{{ path('service_edit', {'id':service.id}) }}">Editar</a></td>
             </tr>
         {% endfor %}
         </tbody>
