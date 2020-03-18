@@ -1,24 +1,38 @@
 {% if services|length >= 1 %}
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripción</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for service in services %}
-            <tr>
-                <th scope="row"><a title="Abrir" href="{{ service.urlService }}">{{ service.name }}</a></th>
-                <td><a href="{{ path('service_detail', {'id':service.id}) }}">{{ service.description }}</a></td>
-                {# <td><a href="{{ service.urlService }}">Abrir</a></td> #}
-                <td><a href="{{ path('service_edit', {'id':service.id}) }}">Editar</a></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Nombre</th>
+				<th scope="col">Descripción</th>
+				<th scope="col"></th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for service in services %}
+				<tr>
+					<th scope="row">
+						<a title="Abrir" href="{{ service.urlService }}">{{ service.name }}</a>
+					</th>
+					<td>
+						<a href="{{ path('service_detail', {'id':service.id}) }}">{{ service.description }}</a>
+					</td>
+					{# <td><a href="{{ service.urlService }}">Abrir</a></td> #}
+
+					{% if app.user != null and service.user.id == app.user.id %}
+						<td>
+							<a href="{{ path('service_edit', {'id':service.id}) }}">Editar</a>
+						</td>
+						<td>
+							<a href="{{ path('service_delete', {'id':service.id}) }}">Borrar</a>
+						</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% else %}
-<p><strong>No tienes suscripciones registradas</strong></p>
+	<p>
+		<strong>No tienes suscripciones registradas</strong>
+	</p>
 {% endif %}

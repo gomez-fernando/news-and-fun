@@ -16,12 +16,12 @@ class ServiceController extends AbstractController
 {
     public function index()
     {
-        $em = $this->getDoctrine()->getManager();
+        // $em = $this->getDoctrine()->getManager();
 
         // prueba de entidades y relaciones
-        $service_repo = $this->getDoctrine()->getRepository(Service::class);
-        // $services = $service_repo->findAll();
-        $services = $service_repo->findBy([], ['id' => 'DESC']);
+        // $service_repo = $this->getDoctrine()->getRepository(Service::class);
+        // // $services = $service_repo->findAll();
+        // $services = $service_repo->findBy([], ['id' => 'DESC']);
 
         //    foreach ($services as $service){
         //        echo $service->getUser()->getName().'--->'.$service->getRssService().'<br>';
@@ -42,15 +42,16 @@ class ServiceController extends AbstractController
         //     'controller_name' => 'ServiceController',
         // ]);
 
-        return $this->render('service/index.html.twig', [
-            'services' => $services,
-        ]);
+        // return $this->render('service/index.html.twig', [
+        //     'services' => $services,
+        // ]);
+        return $this->render('service/index.html.twig');
     }
 
     public function detail(Service $service)
     {
         if (!$service) {
-            return $this->redirectToRoute('services');
+            return $this->redirectToRoute('my_services');
         }
 
         return $this->render('service/detail.html.twig', [
@@ -108,7 +109,7 @@ class ServiceController extends AbstractController
     {
         // var_dump($service);
         if (!$user || $user->getId() != $service->getUser()->getId()) {
-            return $this->redirectToRoute('services');
+            return $this->redirectToRoute('my_services');
         }
         $form = $this->createForm(ServiceType::class, $service);
 
@@ -133,5 +134,18 @@ class ServiceController extends AbstractController
             'edit' => true,
             'form' => $form->createView()
         ]);
+    }
+
+    public function delete(UserInterface $user, Service $service)
+    {
+        if (!$user || !$service || $user->getId() != $service->getUser()->getId()) {
+            return $this->redirectToRoute('my_services');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($service);
+        $em->flush();
+
+        return $this->redirectToRoute('my_services');
     }
 }

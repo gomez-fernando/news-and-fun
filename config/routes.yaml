@@ -22,6 +22,10 @@ service_edit:
   path: /editar-suscripcion/{id}
   controller: App\Controller\ServiceController::edit
 
+service_delete:
+  path: /borrar-suscripcion/{id}
+  controller: App\Controller\ServiceController::delete
+
 register:
   path: /registro
   controller: App\Controller\UserController::register
