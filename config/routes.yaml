@@ -11,8 +11,16 @@ service_detail:
   controller: App\Controller\ServiceController::detail
 
 service_creation:
-  path: /nuevo-canal
+  path: /nueva-suscripcion
   controller: App\Controller\ServiceController::creation
+
+my_services:
+  path: /mis-suscripciones
+  controller: App\Controller\ServiceController::myServices
+
+service_edit:
+  path: /editar-suscripcion/{id}
+  controller: App\Controller\ServiceController::edit
 
 register:
   path: /registro

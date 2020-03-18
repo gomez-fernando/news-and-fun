@@ -10,6 +10,8 @@ use App\Entity\User;
 use App\Form\ServiceType;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+// use Doctrine\Common\Collections\Collection;
+
 class ServiceController extends AbstractController
 {
     public function index()
@@ -28,10 +30,10 @@ class ServiceController extends AbstractController
 //            todos los usuarios y sus servicios
         // $user_repo = $this->getDoctrine()->getRepository(User::class);
         // $users = $user_repo->findAll();
-        // foreach($users as $user){
+        // foreach ($users as $user) {
         //     echo "<h1>{$user->getName()} {$user->getSurname()}</h1>";
 
-        //     foreach ($user->getServices() as $service){
+        //     foreach ($user->getServices() as $service) {
         //         echo $service->getRssService().'<br>';
         //     }
         // }
@@ -80,6 +82,32 @@ class ServiceController extends AbstractController
 
         return $this->render('service/creation.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    public function myServices(UserInterface $user)
+    {
+        $service_repo = $this->getDoctrine()->getRepository(Service::class);
+        // $services = $service_repo->findAll();
+        $services = $service_repo->findBy(['user' => $user->getId()]);
+
+        return $this->render('service/my_services.html.twig', [
+            'services' => $services
+        ]);
+
+//        $services = $user->getId();
+//
+//        var_dump($services);
+//
+//        return $this->render('task/my_services.html.twig', [
+//            'services' => $services
+//        ]);
+    }
+
+    public function edit(Request $request, Service $service){
+
+        return $this->render('service/creation.html.twig', [
+            'edit' => true
         ]);
     }
 }

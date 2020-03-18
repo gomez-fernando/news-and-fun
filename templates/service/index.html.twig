@@ -6,65 +6,7 @@
 {% block body %}
 
 <h2>Todas las suscripciones de los usuarios</h2>
+{{ include('includes/service-list.html.twig') }}
 
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th scope="col">Nombre</th>
-			<th scope="col">Descripción</th>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for service in services %}
-		<tr>
-			<th scope="row"><a title="Abrir" href="{{ service.urlService }}">{{ service.name }}</a></th>
-			<td><a href="{{ path('service_detail', {'id':service.id}) }}">{{ service.description }}</a></td>
-			{# <td><a href="{{ service.urlService }}">Abrir</a></td> #}
-			<td><a href="{{ service.urlService }}">Editar</a></td>
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
-
-
-{# <div class="row justify-content-center h-100">
-			<div class="col-sm-8 align-self-center text-center">
-				<div class="card shadow">
-					<div class="card-body">
-						<h1 class="m-5">Bienvenido/a</h1>
-		
-						<h2>Aquí se mostrarán las noticias</h2>
-					</div>
-				</div>
-			</div>
-		</div> #}
-
-
-{# <style>
-		.bloque {
-			display: flex;
-			background-color: #dfde79;
-			place-items: center;
-			justify-content: center;
-			height: 93vh;
-		}
-
-		.elemento {
-			background-color: white;
-			border-radius: 10px;
-			box-shadow: saddlebrown 0 0 10px;
-			padding: 20px;
-		}
-	</style>
-
-	<div class="bloque">
-		<div class="elemento">
-			<h1 class="">Bienvenido/a</h1>
-
-			<h2>Aquí se mostrarán las noticias</h2>
-		</div>
-	</div> #}
 
 {% endblock %}

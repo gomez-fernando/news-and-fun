@@ -1,0 +1,24 @@
+{% if services|length >= 1 %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr>
+                <th scope="row"><a title="Abrir" href="{{ service.urlService }}">{{ service.name }}</a></th>
+                <td><a href="{{ path('service_detail', {'id':service.id}) }}">{{ service.description }}</a></td>
+                {# <td><a href="{{ service.urlService }}">Abrir</a></td> #}
+                <td><a href="{{ service.urlService }}">Editar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+<p><strong>No tienes suscripciones registradas</strong></p>
+{% endif %}

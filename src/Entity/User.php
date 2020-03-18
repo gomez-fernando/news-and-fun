@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-// añadir estas después de hacer el regenerate
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
 use Doctrine\ORM\Mapping as ORM;
-// añadir para la funcionalidad del login
+// para poder usar la interfaz del usuario en el controlador
 use Symfony\Component\Security\Core\User\UserInterface;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
