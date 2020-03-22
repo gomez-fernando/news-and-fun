@@ -35,10 +35,11 @@ DROP TABLE IF EXISTS `services`;
 CREATE TABLE IF NOT EXISTS `services` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `user_id` int(255) NOT NULL,
+  `categorie_id` int(255) NOT NULL,
   `name` varchar(150) NOT NULL,
-  `url_service` varchar(500) DEFAULT NULL,
-  `description` varchar(520) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
+  `url_service` varchar(500) NOT NULL,
+  `description` varchar(520) NOT NULL,
+  `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_service_user` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -48,11 +49,33 @@ CREATE TABLE IF NOT EXISTS `services` (
 -- Volcado de datos para la tabla `services`
 --
 
-INSERT INTO `services` (`id`, `user_id`, `name`, `url_service`, `description`, `created_at`) VALUES
-(1, 1, 'noticias', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(2, 2, 'música top', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(3, 3, 'deportes', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(4, 1, 'brico consejos', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
+INSERT INTO `services` (`id`, `categorie_id`, `user_id`, `name`, `url_service`, `description`, `created_at`) VALUES
+(1, 1, 1, 'noticias', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(2, 2, 2, 'música top', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(3, 3, 3,  'deportes', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(4, 1, 4, 'brico consejos', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
+
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `user_id` int(255) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_service_user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+
+--
+-- Volcado de datos para la tabla `categories`
+--
+
+INSERT INTO `categories` (`id`, `user_id`, `name`) VALUES
+(1, 1, 'Noticias nacionales'),
+(2, 2, 'Música'),
+(3, 3, 'Deportes'),
+(4, 1, 'Mis aficiones');
 
 -- --------------------------------------------------------
 
@@ -63,13 +86,13 @@ INSERT INTO `services` (`id`, `user_id`, `name`, `url_service`, `description`, `
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
-  `role` varchar(50) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `surname` varchar(200) DEFAULT NULL,
-  `nick` varchar(200) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
+  `role` varchar(50) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `surname` varchar(200) NOT NULL,
+  `nick` varchar(200) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -83,14 +106,23 @@ INSERT INTO `users` (`id`, `role`, `name`, `surname`, `nick`, `email`, `password
 (3, 'ROLE_USER', 'Alvaro', 'Miranda', '@user3', 'user3@user3.com', '$2y$12$/KpQiMmVlvKXFTCZOQxtX.rilC7/bAONlGKtJ7vZJWv/KrM9EwSbu', '2020-03-04 21:13:36');
 
 --
--- Restricciones para tablas volcadas
---
-
---
 -- Filtros para la tabla `services`
 --
+ALTER TABLE `users`
+
+    ADD CONSTRAINT uk_users_email_nick UNIQUE(email, nick);
+
 ALTER TABLE `services`
-  ADD CONSTRAINT `fk_service_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+    ADD CONSTRAINT uk_services_name UNIQUE(name),
+  ADD CONSTRAINT `fk_service_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE restrict ON UPDATE restrict,
+  ADD CONSTRAINT `fk_service_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE restrict ON UPDATE restrict;
+
+ALTER TABLE `categories`
+
+    ADD CONSTRAINT uk_catogories_name UNIQUE(name),
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

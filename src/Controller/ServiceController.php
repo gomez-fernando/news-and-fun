@@ -76,9 +76,11 @@ class ServiceController extends AbstractController
             $em->persist($service);
             $em->flush();
 
-            return $this->redirect(
-                $this->generateUrl('service_detail', ['id' => $service->getId()])
-            );
+            return $this->redirectToRoute('my_services');
+
+            // return $this->redirect(
+            //     $this->generateUrl('service_detail', ['id' => $service->getId()])
+            // );
         }
 
         return $this->render('service/creation.html.twig', [

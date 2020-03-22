@@ -80,7 +80,7 @@ class UserController extends AbstractController
         return $this->render('user/profile_view.html.twig');
     }
 
-    public function profile_edit(Request $request, UserInterface $user)
+    public function profile_edit(Request $request, UserInterface $user, UserPasswordEncoderInterface $encoder)
     {
         if (!$user) {
             return $this->redirectToRoute('my_services');
@@ -92,6 +92,11 @@ class UserController extends AbstractController
         $user->setSurname($request->get("_surname"));
         $user->setNick($request->get("_nick"));
         $user->setEmail($request->get("_email"));
+        if ($request->get("_password") != "") {
+            //            cifrar contraseña
+            $encoded = $encoder->encodePassword($user, $request->get("_password"));
+            $user->setPassword($encoded);
+        }
         // dd($user);
         // $service->setCreatedAt(new \Datetime('now'));
         // var_dump($user);

@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  color: #1b1b1b;
 }
 
 main {
@@ -15,6 +16,13 @@ footer {
 .navbar-brand img {
   width: 106px;
   margin: -5px 0px -10px 0;
+}
+.btn-outline-primary {
+  color: #1b1b1b;
+  border-color: #ff7816;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (min-width: 576px) {
