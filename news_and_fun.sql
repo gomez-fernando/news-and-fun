@@ -120,7 +120,8 @@ ALTER TABLE `services`
 
 ALTER TABLE `categories`
 
-    ADD CONSTRAINT uk_catogories_name UNIQUE(name);
+    ADD CONSTRAINT uk_catogories_name UNIQUE(name),
+  ADD CONSTRAINT `fk_category_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE restrict ON UPDATE restrict;
 
 
 COMMIT;

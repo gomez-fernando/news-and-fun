@@ -3,8 +3,8 @@
 		<thead>
 			<tr>
 				<th scope="col">Nombre</th>
+				<th scope="col">Categoría</th>
 				<th scope="col">Descripción</th>
-				<th scope="col"></th>
 				<th scope="col"></th>
 			</tr>
 		</thead>
@@ -12,10 +12,13 @@
 			{% for service in services %}
 				<tr>
 					<th scope="row">
-						<a title="Abrir" href="{{ service.urlService }}">{{ service.name }}</a>
+						<a title="Abrir" href="{{ path('service_detail', {'id':service.id}) }}">{{ service.name }}</a>
 					</th>
 					<td>
-						<a href="{{ path('service_detail', {'id':service.id}) }}">{{ service.description }}</a>
+						{{ service.category.name }}
+					</td>
+					<td>
+						{{ service.description }}
 					</td>
 					{# <td><a href="{{ service.urlService }}">Abrir</a></td> #}
 

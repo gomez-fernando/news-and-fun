@@ -26,6 +26,10 @@ service_delete:
   path: /borrar-suscripcion/{id}
   controller: App\Controller\ServiceController::delete
 
+category_creation:
+  path: /nueva-categoria
+  controller: App\Controller\CategoryController::creation
+
 register:
   path: /registro
   controller: App\Controller\UserController::register
