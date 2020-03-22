@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS `services`;
 CREATE TABLE IF NOT EXISTS `services` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `user_id` int(255) NOT NULL,
-  `categorie_id` int(255) NOT NULL,
+  `category_id` int(255) NOT NULL,
   `name` varchar(150) NOT NULL,
   `url_service` varchar(500) NOT NULL,
   `description` varchar(520) NOT NULL,
@@ -49,10 +49,10 @@ CREATE TABLE IF NOT EXISTS `services` (
 -- Volcado de datos para la tabla `services`
 --
 
-INSERT INTO `services` (`id`, `categorie_id`, `user_id`, `name`, `url_service`, `description`, `created_at`) VALUES
+INSERT INTO `services` (`id`, `user_id`, `category_id`, `name`, `url_service`, `description`, `created_at`) VALUES
 (1, 1, 1, 'noticias', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
 (2, 2, 2, 'música top', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(3, 3, 3,  'deportes', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(3, 3, 3, 'deportes', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
 (4, 1, 4, 'brico consejos', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
 
 -- --------------------------------------------------------
@@ -120,11 +120,9 @@ ALTER TABLE `services`
 
 ALTER TABLE `categories`
 
-    ADD CONSTRAINT uk_catogories_name UNIQUE(name),
+    ADD CONSTRAINT uk_catogories_name UNIQUE(name);
 
 
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
