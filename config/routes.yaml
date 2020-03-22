@@ -30,6 +30,14 @@ register:
   path: /registro
   controller: App\Controller\UserController::register
 
+profile_view:
+  path: /mi-perfil
+  controller: App\Controller\UserController::profile_view
+
+profile_edit:
+  path: /editar-perfil
+  controller: App\Controller\UserController::profile_edit
+
 login:
   path: /login
   controller: App\Controller\UserController::login

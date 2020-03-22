@@ -41,4 +41,5 @@ security:
     - { path: ^/nueva-suscripcion, roles: ROLE_USER }
     - { path: ^/mis-suscripciones, roles: ROLE_USER }
     - { path: ^/editar-suscripcion, roles: ROLE_USER }
-    - { path: ^/borrar.suscripcion, roles: ROLE_USER }
+    - { path: ^/borrar-suscripcion, roles: ROLE_USER }
+    - { path: ^/mi-perfil, roles: ROLE_USER }

@@ -38,6 +38,8 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     * @Assert\NotBLank
+     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $name;
 
@@ -45,6 +47,8 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="surname", type="string", length=200, nullable=true)
+     * @Assert\NotBLank
+     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $surname;
 
@@ -52,6 +56,8 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="nick", type="string", length=200, nullable=true)
+     * @Assert\NotBLank
+     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $nick;
 
@@ -59,6 +65,11 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\NotBLank
+     * @Assert\Email(
+     *      message = "El email '{{ value }}' no es válido",
+     *      checkMX = true
+     * )
      */
     private $email;
 
@@ -66,6 +77,7 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $password;
 

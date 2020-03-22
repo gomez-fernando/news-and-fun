@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
@@ -72,5 +73,34 @@ class UserController extends AbstractController
             'error' => $error,
             'last_username' => $lastUsername
         ));
+    }
+
+    public function profile_view(UserInterface $user)
+    {
+        return $this->render('user/profile_view.html.twig');
+    }
+
+    public function profile_edit(Request $request, UserInterface $user)
+    {
+        if (!$user) {
+            return $this->redirectToRoute('my_services');
+        }
+
+        // var_dump($request);
+        // die();
+        $user->setName($request->get("_name"));
+        $user->setSurname($request->get("_surname"));
+        $user->setNick($request->get("_nick"));
+        $user->setEmail($request->get("_email"));
+        // dd($user);
+        // $service->setCreatedAt(new \Datetime('now'));
+        // var_dump($user);
+        // $service->setUser($user);
+        // var_dump($service);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('services');
     }
 }
