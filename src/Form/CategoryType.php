@@ -10,22 +10,12 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\Category;
 
-class ServiceType extends AbstractType
+class CategoryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {      
+    {        
         $builder->add('name', TextType::class, array(
             'label' => 'Nombre'
-        ))
-        ->add('description', TextareaType::class, array(
-            'label' => 'Descripción'
-        ))
-        ->add('category', EntityType::class, [
-            'class' => Category::class,
-            'choice_label' => 'name'
-        ])
-        ->add('url_service', TextType::class, array(
-            'label' => 'Dirección web'
         ))
         ->add('submit', SubmitType::class, array(
             'label' => 'Guardar'

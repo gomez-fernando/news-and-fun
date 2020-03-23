@@ -16,35 +16,6 @@ class ServiceController extends AbstractController
 {
     public function index()
     {
-        // $em = $this->getDoctrine()->getManager();
-
-        // prueba de entidades y relaciones
-        // $service_repo = $this->getDoctrine()->getRepository(Service::class);
-        // // $services = $service_repo->findAll();
-        // $services = $service_repo->findBy([], ['id' => 'DESC']);
-
-        //    foreach ($services as $service){
-        //        echo $service->getUser()->getName().'--->'.$service->getRssService().'<br>';
-        //    }
-//        ----------------------------
-//            todos los usuarios y sus servicios
-        // $user_repo = $this->getDoctrine()->getRepository(User::class);
-        // $users = $user_repo->findAll();
-        // foreach ($users as $user) {
-        //     echo "<h1>{$user->getName()} {$user->getSurname()}</h1>";
-
-        //     foreach ($user->getServices() as $service) {
-        //         echo $service->getRssService().'<br>';
-        //     }
-        // }
-
-        // return $this->render('service/index.html.twig', [
-        //     'controller_name' => 'ServiceController',
-        // ]);
-
-        // return $this->render('service/index.html.twig', [
-        //     'services' => $services,
-        // ]);
         return $this->render('service/index.html.twig');
     }
 
@@ -97,14 +68,6 @@ class ServiceController extends AbstractController
         return $this->render('service/my_services.html.twig', [
             'services' => $services
         ]);
-
-//        $services = $user->getId();
-//
-//        var_dump($services);
-//
-//        return $this->render('task/my_services.html.twig', [
-//            'services' => $services
-//        ]);
     }
 
     public function edit(Request $request, UserInterface $user, Service $service)

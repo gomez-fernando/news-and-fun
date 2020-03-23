@@ -26,9 +26,25 @@ service_delete:
   path: /borrar-suscripcion/{id}
   controller: App\Controller\ServiceController::delete
 
+category_detail:
+  path: /categoria/{id}
+  controller: App\Controller\CategoryController::detail
+
 category_creation:
   path: /nueva-categoria
   controller: App\Controller\CategoryController::creation
+
+my_categories:
+  path: /mis-categorias
+  controller: App\Controller\CategoryController::myCategories
+
+category_edit:
+  path: /editar-categoria/{id}
+  controller: App\Controller\CategoryController::edit
+
+category_delete:
+  path: /borrar-categoria/{id}
+  controller: App\Controller\CategoryController::delete
 
 register:
   path: /registro
