@@ -64,3 +64,7 @@ login:
 
 logout:
   path: /logout
+
+user_delete:
+  path: /darse-de-baja
+  controller: App\Controller\UserController::delete

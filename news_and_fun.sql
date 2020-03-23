@@ -50,10 +50,12 @@ CREATE TABLE IF NOT EXISTS `services` (
 --
 
 INSERT INTO `services` (`id`, `user_id`, `category_id`, `name`, `url_service`, `description`, `created_at`) VALUES
-(1, 1, 1, 'noticias', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(2, 2, 2, 'música top', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(3, 3, 3, 'deportes', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(4, 1, 4, 'brico consejos', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
+(1, 1, 1, 'noticias 1', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(2, 1, 1, 'noticias 2', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(3, 1, 2, 'música 1', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(4, 1, 2, 'música 2', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(5, 2, 3, 'del usuario 2', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(6, 3, 4, 'del usuario 3', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
 
 -- --------------------------------------------------------
 
@@ -73,9 +75,9 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 INSERT INTO `categories` (`id`, `user_id`, `name`) VALUES
 (1, 1, 'Noticias nacionales'),
-(2, 2, 'Música'),
-(3, 3, 'Deportes'),
-(4, 1, 'Mis aficiones');
+(2, 1, 'Música'),
+(3, 2, 'Deportes'),
+(4, 3, 'Mis aficiones');
 
 -- --------------------------------------------------------
 
