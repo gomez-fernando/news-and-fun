@@ -94,4 +94,29 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    public function delete(UserInterface $user, Category $category)
+    {
+        if (!$user || !$category || $user->getId() != $category->getUser()->getId()) {
+            return $this->redirectToRoute('my_categories');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        // eliminar los servicios de la categoria antes de poder eliminar la categoria 
+        // $categoryId = $category->getId();
+        $service_repo = $this->getDoctrine()->getRepository(Service::class);
+        // $services = $service_repo->findAll();
+        $services = $service_repo->findBy(['category' => $category->getId()]);
+
+        foreach($services as $service){
+            $em->remove($service);
+        $em->flush();
+        }
+        
+        $em->remove($category);
+        $em->flush();
+
+        return $this->redirectToRoute('my_categories');
+    }
+
 }
