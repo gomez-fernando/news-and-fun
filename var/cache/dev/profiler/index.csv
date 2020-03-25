@@ -56,3 +56,11 @@ ebb52e,127.0.0.1,GET,http://news-and-fun.test/mis-suscripciones,1585050484,,200
 24d1c1,127.0.0.1,GET,http://news-and-fun.test/editar-suscripcion/1,1585050489,,200
 eab6e9,127.0.0.1,GET,http://news-and-fun.test/mis-categorias,1585050647,,200
 306a6b,127.0.0.1,GET,http://news-and-fun.test/editar-categoria/1,1585050649,,200
+a143bf,127.0.0.1,GET,http://news-and-fun.test/,1585128522,,200
+213943,127.0.0.1,GET,http://news-and-fun.test/logout,1585128529,,302
+e669d2,127.0.0.1,GET,http://news-and-fun.test/,1585128529,,200
+04efd3,127.0.0.1,GET,http://news-and-fun.test/login,1585128535,,200
+512778,127.0.0.1,POST,http://news-and-fun.test/login,1585128542,,302
+b90c23,127.0.0.1,GET,http://news-and-fun.test/,1585128542,,200
+960fe8,127.0.0.1,GET,http://news-and-fun.test/,1585128561,,200
+480501,127.0.0.1,GET,http://news-and-fun.test/,1585128645,,200
