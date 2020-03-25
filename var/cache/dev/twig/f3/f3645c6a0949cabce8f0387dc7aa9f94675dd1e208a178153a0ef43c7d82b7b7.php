@@ -86,13 +86,37 @@ class __TwigTemplate_d64b5c92a725f5820862b9fc815d66bea0d55e3b866b9fb6612b7b271a5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
-        echo "
-";
-        // line 10
-        echo "
-<h2>Página de inicio</h2>
-<h2>Aquí iría un carrusel de imágenes</h2>
-<h2>Y el diseño vuestro de la web</h2>
+        echo "<div class=\"container\">
+  <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">
+    <ol class=\"carousel-indicators\">
+      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>
+      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>
+      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>
+    </ol>
+    <div class=\"carousel-inner\">
+      <div class=\"carousel-item active\">
+        <img class=\"d-block w-100\" src=\"";
+        // line 16
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/slider1.jpg"), "html", null, true);
+        echo "\" alt=\"First slide\">
+      </div>
+      <div class=\"carousel-item\">
+        <img class=\"d-block w-100\" src=\".../800x400?auto=yes&bg=666&fg=444&text=Second slide\" alt=\"Second slide\">
+      </div>
+      <div class=\"carousel-item\">
+        <img class=\"d-block w-100\" src=\".../800x400?auto=yes&bg=555&fg=333&text=Third slide\" alt=\"Third slide\">
+      </div>
+    </div>
+    <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
+      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
+      <span class=\"sr-only\">Previous</span>
+    </a>
+    <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
+      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
+      <span class=\"sr-only\">Next</span>
+    </a>
+  </div>
+</div>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -114,7 +138,7 @@ class __TwigTemplate_d64b5c92a725f5820862b9fc815d66bea0d55e3b866b9fb6612b7b271a5
 
     public function getDebugInfo()
     {
-        return array (  92 => 10,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  100 => 16,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -125,13 +149,34 @@ class __TwigTemplate_d64b5c92a725f5820862b9fc815d66bea0d55e3b866b9fb6612b7b271a5
 {% endblock %}
 
 {% block body %}
-
-{# <h2>Todas las suscripciones de los usuarios</h2>
-{{ include('includes/service-list.html.twig') }} #}
-
-<h2>Página de inicio</h2>
-<h2>Aquí iría un carrusel de imágenes</h2>
-<h2>Y el diseño vuestro de la web</h2>
+<div class=\"container\">
+  <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">
+    <ol class=\"carousel-indicators\">
+      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>
+      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>
+      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>
+    </ol>
+    <div class=\"carousel-inner\">
+      <div class=\"carousel-item active\">
+        <img class=\"d-block w-100\" src=\"{{asset('assets/img/slider1.jpg')}}\" alt=\"First slide\">
+      </div>
+      <div class=\"carousel-item\">
+        <img class=\"d-block w-100\" src=\".../800x400?auto=yes&bg=666&fg=444&text=Second slide\" alt=\"Second slide\">
+      </div>
+      <div class=\"carousel-item\">
+        <img class=\"d-block w-100\" src=\".../800x400?auto=yes&bg=555&fg=333&text=Third slide\" alt=\"Third slide\">
+      </div>
+    </div>
+    <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
+      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
+      <span class=\"sr-only\">Previous</span>
+    </a>
+    <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
+      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
+      <span class=\"sr-only\">Next</span>
+    </a>
+  </div>
+</div>
 {% endblock %}", "service/index.html.twig", "C:\\wamp64\\www\\news-and-fun\\templates\\service\\index.html.twig");
     }
 }

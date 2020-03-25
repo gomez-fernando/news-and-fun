@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 // use Doctrine\Common\Collections\Collection;
 
 class CategoryController extends AbstractController
-{ 
+{
     public function detail(Category $category)
     {
         if (!$category) {
@@ -102,15 +102,15 @@ class CategoryController extends AbstractController
 
         $em = $this->getDoctrine()->getManager();
 
-        // eliminar los servicios de la categoria antes de poder eliminar la categoria 
+        // eliminar los servicios de la categoria antes de poder eliminar la categoria
         // $categoryId = $category->getId();
         $service_repo = $this->getDoctrine()->getRepository(Service::class);
         // $services = $service_repo->findAll();
         $services = $service_repo->findBy(['category' => $category->getId()]);
 
-        foreach($services as $service){
+        foreach ($services as $service) {
             $em->remove($service);
-        $em->flush();
+            $em->flush();
         }
         
         $em->remove($category);
@@ -119,4 +119,24 @@ class CategoryController extends AbstractController
         return $this->redirectToRoute('my_categories');
     }
 
+    public function byCategory(UserInterface $user, Category $category)
+    {
+        $service_repo = $this->getDoctrine()->getRepository(Service::class);
+        // $services = $service_repo->findAll();
+        $services = $service_repo->findBy([
+            'user' => $user->getId(),
+            'category' => $category->getId(),
+        ]);
+
+        // $servicesByCategory = $services->findBy(['category' => $category->getId()]);
+
+        // $category_repo = $this->getDoctrine()->getRepository(Category::class);
+        // // $categorys = $category_repo->findAll();
+        // $categories = $category_repo->findBy(['user' => $user->getId()]);
+
+        return $this->render('service/by_category.html.twig', [
+            'services' => $services,
+            'category_name' => $category->getName()
+        ]);
+    }
 }

@@ -24,6 +24,17 @@ footer {
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.8);
 }
+.btn-outline-primary:hover {
+  background-color: #f18a2a;
+  border-color: #ff7816;
+}
+#index img {
+  display: none;
+}
+.divider {
+  width: 40%;
+  background-color: #ffb064;
+}
 
 @media screen and (min-width: 576px) {
   .navbar-brand img {

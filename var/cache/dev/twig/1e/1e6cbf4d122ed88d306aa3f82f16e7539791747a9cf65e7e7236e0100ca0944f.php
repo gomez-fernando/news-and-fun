@@ -42,81 +42,83 @@ class __TwigTemplate_f88fd53f7b64d797fc6fa1b37e3d55c7f511eb808d54fadda02213e4bfb
         // line 1
         if ((twig_length_filter($this->env, (isset($context["services"]) || array_key_exists("services", $context) ? $context["services"] : (function () { throw new RuntimeError('Variable "services" does not exist.', 1, $this->source); })())) >= 1)) {
             // line 2
-            echo "\t<table class=\"table table-hover\">
-\t\t<thead>
-\t\t\t<tr>
-\t\t\t\t<th scope=\"col\">Nombre</th>
-\t\t\t\t<th scope=\"col\">Categoría</th>
-\t\t\t\t<th scope=\"col\">Descripción</th>
-\t\t\t\t<th scope=\"col\"></th>
-\t\t\t\t<th scope=\"col\"></th>
-\t\t\t</tr>
-\t\t</thead>
-\t\t<tbody>
-\t\t\t";
+            echo "<table class=\"table table-hover\">
+\t<thead>
+\t\t<tr>
+\t\t\t<th scope=\"col\">Nombre</th>
+\t\t\t<th scope=\"col\">Categoría</th>
+\t\t\t<th scope=\"col\">Descripción</th>
+\t\t\t<th scope=\"col\"></th>
+\t\t\t<th scope=\"col\"></th>
+\t\t</tr>
+\t</thead>
+\t<tbody>
+\t\t";
             // line 13
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["services"]) || array_key_exists("services", $context) ? $context["services"] : (function () { throw new RuntimeError('Variable "services" does not exist.', 13, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["service"]) {
                 // line 14
-                echo "\t\t\t\t<tr>
-\t\t\t\t\t<th scope=\"row\">
-\t\t\t\t\t\t<a title=\"Abrir\" href=\"";
+                echo "\t\t<tr>
+\t\t\t<th scope=\"row\">
+\t\t\t\t<a title=\"Abrir\" href=\"";
                 // line 16
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("service_detail", ["id" => twig_get_attribute($this->env, $this->source, $context["service"], "id", [], "any", false, false, false, 16)]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["service"], "name", [], "any", false, false, false, 16), "html", null, true);
                 echo "</a>
-\t\t\t\t\t</th>
-\t\t\t\t\t<td>
-\t\t\t\t\t\t";
+\t\t\t</th>
+\t\t\t<td>
+\t\t\t\t";
                 // line 19
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["service"], "category", [], "any", false, false, false, 19), "name", [], "any", false, false, false, 19), "html", null, true);
                 echo "
-\t\t\t\t\t</td>
-\t\t\t\t\t<td>
-\t\t\t\t\t\t";
+\t\t\t</td>
+\t\t\t<td>
+\t\t\t\t<a href=\"";
                 // line 22
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("service_detail", ["id" => twig_get_attribute($this->env, $this->source, $context["service"], "id", [], "any", false, false, false, 22)]), "html", null, true);
+                echo "\">";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["service"], "description", [], "any", false, false, false, 22), "html", null, true);
-                echo "
-\t\t\t\t\t</td>
-\t\t\t\t\t";
+                echo "</a>
+\t\t\t</td>
+\t\t\t";
                 // line 25
                 echo "
-\t\t\t\t\t";
+\t\t\t";
                 // line 26
                 if (((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "user", [], "any", false, false, false, 26) != null) && (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["service"], "user", [], "any", false, false, false, 26), "id", [], "any", false, false, false, 26) == twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "user", [], "any", false, false, false, 26), "id", [], "any", false, false, false, 26)))) {
                     // line 27
-                    echo "\t\t\t\t\t\t<td>
-\t\t\t\t\t\t\t<a href=\"";
+                    echo "\t\t\t<td>
+\t\t\t\t<a href=\"";
                     // line 28
                     echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("service_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["service"], "id", [], "any", false, false, false, 28)]), "html", null, true);
                     echo "\">Editar</a>
-\t\t\t\t\t\t</td>
-\t\t\t\t\t\t<td>
-\t\t\t\t\t\t\t<a href=\"";
+\t\t\t</td>
+\t\t\t<td>
+\t\t\t\t<a href=\"";
                     // line 31
                     echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("service_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["service"], "id", [], "any", false, false, false, 31)]), "html", null, true);
                     echo "\">Borrar</a>
-\t\t\t\t\t\t</td>
-\t\t\t\t\t";
+\t\t\t</td>
+\t\t\t";
                 }
                 // line 34
-                echo "\t\t\t\t</tr>
-\t\t\t";
+                echo "\t\t</tr>
+\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['service'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
             // line 36
-            echo "\t\t</tbody>
-\t</table>
+            echo "\t</tbody>
+</table>
 ";
         } else {
             // line 39
-            echo "\t<p>
-\t\t<strong>No tienes suscripciones registradas</strong>
-\t</p>
+            echo "<p>
+\t<strong>No tienes suscripciones registradas</strong>
+</p>
 ";
         }
         
@@ -139,53 +141,52 @@ class __TwigTemplate_f88fd53f7b64d797fc6fa1b37e3d55c7f511eb808d54fadda02213e4bfb
 
     public function getDebugInfo()
     {
-        return array (  117 => 39,  112 => 36,  105 => 34,  99 => 31,  93 => 28,  90 => 27,  88 => 26,  85 => 25,  80 => 22,  74 => 19,  66 => 16,  62 => 14,  58 => 13,  45 => 2,  43 => 1,);
+        return array (  119 => 39,  114 => 36,  107 => 34,  101 => 31,  95 => 28,  92 => 27,  90 => 26,  87 => 25,  80 => 22,  74 => 19,  66 => 16,  62 => 14,  58 => 13,  45 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% if services|length >= 1 %}
-\t<table class=\"table table-hover\">
-\t\t<thead>
-\t\t\t<tr>
-\t\t\t\t<th scope=\"col\">Nombre</th>
-\t\t\t\t<th scope=\"col\">Categoría</th>
-\t\t\t\t<th scope=\"col\">Descripción</th>
-\t\t\t\t<th scope=\"col\"></th>
-\t\t\t\t<th scope=\"col\"></th>
-\t\t\t</tr>
-\t\t</thead>
-\t\t<tbody>
-\t\t\t{% for service in services %}
-\t\t\t\t<tr>
-\t\t\t\t\t<th scope=\"row\">
-\t\t\t\t\t\t<a title=\"Abrir\" href=\"{{ path('service_detail', {'id':service.id}) }}\">{{ service.name }}</a>
-\t\t\t\t\t</th>
-\t\t\t\t\t<td>
-\t\t\t\t\t\t{{ service.category.name }}
-\t\t\t\t\t</td>
-\t\t\t\t\t<td>
-\t\t\t\t\t\t{{ service.description }}
-\t\t\t\t\t</td>
-\t\t\t\t\t{# <td><a href=\"{{ service.urlService }}\">Abrir</a></td> #}
+<table class=\"table table-hover\">
+\t<thead>
+\t\t<tr>
+\t\t\t<th scope=\"col\">Nombre</th>
+\t\t\t<th scope=\"col\">Categoría</th>
+\t\t\t<th scope=\"col\">Descripción</th>
+\t\t\t<th scope=\"col\"></th>
+\t\t\t<th scope=\"col\"></th>
+\t\t</tr>
+\t</thead>
+\t<tbody>
+\t\t{% for service in services %}
+\t\t<tr>
+\t\t\t<th scope=\"row\">
+\t\t\t\t<a title=\"Abrir\" href=\"{{ path('service_detail', {'id':service.id}) }}\">{{ service.name }}</a>
+\t\t\t</th>
+\t\t\t<td>
+\t\t\t\t{{ service.category.name }}
+\t\t\t</td>
+\t\t\t<td>
+\t\t\t\t<a href=\"{{ path('service_detail', {'id':service.id}) }}\">{{ service.description }}</a>
+\t\t\t</td>
+\t\t\t{# <td><a href=\"{{ service.urlService }}\">Abrir</a></td> #}
 
-\t\t\t\t\t{% if app.user != null and service.user.id == app.user.id %}
-\t\t\t\t\t\t<td>
-\t\t\t\t\t\t\t<a href=\"{{ path('service_edit', {'id':service.id}) }}\">Editar</a>
-\t\t\t\t\t\t</td>
-\t\t\t\t\t\t<td>
-\t\t\t\t\t\t\t<a href=\"{{ path('service_delete', {'id':service.id}) }}\">Borrar</a>
-\t\t\t\t\t\t</td>
-\t\t\t\t\t{% endif %}
-\t\t\t\t</tr>
-\t\t\t{% endfor %}
-\t\t</tbody>
-\t</table>
+\t\t\t{% if app.user != null and service.user.id == app.user.id %}
+\t\t\t<td>
+\t\t\t\t<a href=\"{{ path('service_edit', {'id':service.id}) }}\">Editar</a>
+\t\t\t</td>
+\t\t\t<td>
+\t\t\t\t<a href=\"{{ path('service_delete', {'id':service.id}) }}\">Borrar</a>
+\t\t\t</td>
+\t\t\t{% endif %}
+\t\t</tr>
+\t\t{% endfor %}
+\t</tbody>
+</table>
 {% else %}
-\t<p>
-\t\t<strong>No tienes suscripciones registradas</strong>
-\t</p>
-{% endif %}
-", "includes/service-list.html.twig", "C:\\wamp64\\www\\news-and-fun\\templates\\includes\\service-list.html.twig");
+<p>
+\t<strong>No tienes suscripciones registradas</strong>
+</p>
+{% endif %}", "includes/service-list.html.twig", "C:\\wamp64\\www\\news-and-fun\\templates\\includes\\service-list.html.twig");
     }
 }

@@ -4,20 +4,72 @@
 {% endblock %}
 
 {% block body %}
+<script>
+  function showRSS(str) {
+    if (str.length == 0) {
+      document.getElementById("rssOutput").innerHTML = "";
+      return;
+    }
+    //El objeto XMLHttpRequest se usa para intercambiar datos con un servidor. 
+    if (window.XMLHttpRequest) {
+      // código para IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+    } else {  // código para IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    //Cuando se envía una petición a un servidor y queremos realizar algunas acciones sobre la base de la respuesta se
+    //utiliza el evento onreadystatechange y se dispara cada vez que cambia el readyState. 
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        // getElementById sirve para obtener el elemento con el ID especificado: 
+        document.getElementById("rssOutput").innerHTML = xmlhttp.responseText;
+        //Si la respuesta del servidor no es XML, se utiliza la propiedad responseText.
+        //La propiedad responseText devuelve la respuesta como una cadena.
+      }
+    }
+    // Para enviar una petición a un servidor, se utiliza el open() y send() métodos del objeto XMLHttpRequest: 
+    //GET es más simple y más rápido que POST, y se puede utilizar en la mayoría de los casos. 
+    //Aun que POST es mucho más rápido y seguro
+    xmlhttp.open("GET", "{{asset('assets/img/getrss.php?q=')}}" + str, true);
+    xmlhttp.send();
+  }
+</script>
+<form>
+  <select onchange="showRSS(this.value)">
+    <option value="">Selecciona un RSS-feed:</option>
+    <option value="entreunosyceros">entreunosyceros</option>
+    <option value="elpais">elpais</option>
+    <option value="Ubunlog">Ubunlog</option>
+  </select>
+</form>
+<br>
+<div id="rssOutput">El RSS-feed será listado aquí ...</div>
+
+
+
+
 
 <h2>{{ service.name }}</h2>
-<p>
+<hr>
+<h3>
+  Título
+</h3>
+<p>{{ channel_title }}</p>
+<h3>
   Descripción
-</p>
+</h3>
 <p>
   {{ service.description }}
 </p>
-<p>
+<h3>
   Dirección web
-</p>
+</h3>
 <p>
   {{ service.urlservice }}
 </p>
+
+
+
 
 
 {% endblock %}

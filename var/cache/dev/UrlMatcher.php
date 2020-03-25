@@ -14,7 +14,8 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/user' => [[['_route' => 'user', '_controller' => 'App\\Controller\\UserController::register'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'services', '_controller' => 'App\\Controller\\ServiceController::index'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'index', '_controller' => 'App\\Controller\\ServiceController::index'], null, null, null, false, false, null]],
+        '/ver-noticias' => [[['_route' => 'services', '_controller' => 'App\\Controller\\ServiceController::services'], null, null, null, false, false, null]],
         '/nueva-suscripcion' => [[['_route' => 'service_creation', '_controller' => 'App\\Controller\\ServiceController::creation'], null, null, null, false, false, null]],
         '/mis-suscripciones' => [[['_route' => 'my_services', '_controller' => 'App\\Controller\\ServiceController::myServices'], null, null, null, false, false, null]],
         '/nueva-categoria' => [[['_route' => 'category_creation', '_controller' => 'App\\Controller\\CategoryController::creation'], null, null, null, false, false, null]],
@@ -53,6 +54,7 @@ return [
                     .'|categoria/([^/]++)(*:320)'
                 .')'
                 .'|/categoria/([^/]++)(*:348)'
+                .'|/por\\-categoria/([^/]++)(*:380)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -68,8 +70,9 @@ return [
         253 => [[['_route' => 'category_edit', '_controller' => 'App\\Controller\\CategoryController::edit'], ['id'], null, null, false, true, null]],
         294 => [[['_route' => 'service_delete', '_controller' => 'App\\Controller\\ServiceController::delete'], ['id'], null, null, false, true, null]],
         320 => [[['_route' => 'category_delete', '_controller' => 'App\\Controller\\CategoryController::delete'], ['id'], null, null, false, true, null]],
-        348 => [
-            [['_route' => 'category_detail', '_controller' => 'App\\Controller\\CategoryController::detail'], ['id'], null, null, false, true, null],
+        348 => [[['_route' => 'category_detail', '_controller' => 'App\\Controller\\CategoryController::detail'], ['id'], null, null, false, true, null]],
+        380 => [
+            [['_route' => 'by_category', '_controller' => 'App\\Controller\\CategoryController::byCategory'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

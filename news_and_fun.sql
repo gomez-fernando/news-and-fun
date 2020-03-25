@@ -50,12 +50,11 @@ CREATE TABLE IF NOT EXISTS `services` (
 --
 
 INSERT INTO `services` (`id`, `user_id`, `category_id`, `name`, `url_service`, `description`, `created_at`) VALUES
-(1, 1, 1, 'noticias 1', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(2, 1, 1, 'noticias 2', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(3, 1, 2, 'música 1', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(4, 1, 2, 'música 2', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(5, 2, 3, 'del usuario 2', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(6, 3, 4, 'del usuario 3', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
+(1, 1, 1, 'El Mundo. Ultima hora', 'https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
+(2, 1, 2, 'El Mundo. Deportes', 'https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
+(3, 1, 3, 'Motor', 'https://e00-elmundo.uecdn.es/elmundomotor/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
+(5, 2, 4, 'del usuario 2', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(6, 3, 5, 'del usuario 3', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
 
 -- --------------------------------------------------------
 
@@ -74,10 +73,11 @@ CREATE TABLE IF NOT EXISTS `categories` (
 --
 
 INSERT INTO `categories` (`id`, `user_id`, `name`) VALUES
-(1, 1, 'Noticias nacionales'),
-(2, 1, 'Música'),
-(3, 2, 'Deportes'),
-(4, 3, 'Mis aficiones');
+(1, 1, 'Noticias'),
+(2, 1, 'Deportes'),
+(3, 1, 'Mis aficiones'),
+(4, 2, 'Mis aficiones user 2'),
+(5, 3, 'Mis aficiones user 3');
 
 -- --------------------------------------------------------
 

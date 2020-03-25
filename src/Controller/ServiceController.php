@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Service;
 use App\Entity\User;
+use App\Entity\Category;
 use App\Form\ServiceType;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -18,6 +19,23 @@ class ServiceController extends AbstractController
     {
         return $this->render('service/index.html.twig');
     }
+
+    public function services(UserInterface $user)
+    {
+        $service_repo = $this->getDoctrine()->getRepository(Service::class);
+        // $services = $service_repo->findAll();
+        $services = $service_repo->findBy(['user' => $user->getId()]);
+
+        $category_repo = $this->getDoctrine()->getRepository(Category::class);
+        // $categorys = $category_repo->findAll();
+        $categories = $category_repo->findBy(['user' => $user->getId()]);
+
+        return $this->render('service/services.html.twig', [
+            'services' => $services,
+            'categories' => $categories,
+        ]);
+    }
+    
 
     public function detail(Service $service)
     {

@@ -2,9 +2,13 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-services:
+index:
   path: /
   controller: App\Controller\ServiceController::index
+
+services:
+  path: /ver-noticias
+  controller: App\Controller\ServiceController::services
 
 service_detail:
   path: /servicio/{id}
@@ -29,6 +33,10 @@ service_delete:
 category_detail:
   path: /categoria/{id}
   controller: App\Controller\CategoryController::detail
+
+by_category:
+  path: /por-categoria/{id}
+  controller: App\Controller\CategoryController::byCategory
 
 category_creation:
   path: /nueva-categoria
