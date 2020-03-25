@@ -33,7 +33,7 @@ document.getElementById("rssOutput").innerHTML = xmlhttp.responseText;
 // Para enviar una petición a un servidor, se utiliza el open() y send() métodos del objeto XMLHttpRequest:
 // GET es más simple y más rápido que POST, y se puede utilizar en la mayoría de los casos.
 // Aun que POST es mucho más rápido y seguro
-xmlhttp.open("GET", "{{ asset('assets/img/getrss.php?q=') }}" + str, true);
+xmlhttp.open("GET", "{{ asset('getrss.php?q=') }}" + str, true);
 xmlhttp.send();
 }
 			</script>
