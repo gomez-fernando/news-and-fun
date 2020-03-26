@@ -131,4 +131,24 @@ class ServiceController extends AbstractController
 
         return $this->redirectToRoute('my_services');
     }
+    
+    public function terminosYCondiciones()
+    {
+        return $this->render('legal/terminos_y_condiciones.html.twig');
+    }
+
+    public function terminosDeUso()
+    {
+        return $this->render('legal/terminos_de_uso.html.twig');
+    }
+
+    public function politicaDePrivacidad()
+    {
+        return $this->render('legal/politica_de_privacidad.html.twig');
+    }
+
+    public function politicaDeCookies()
+    {
+        return $this->render('legal/politica_de_cookies.html.twig');
+    }
 }

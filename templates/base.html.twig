@@ -31,9 +31,9 @@
 
 						{% if app.user != null %}
 							{# <form class="form-inline my-2 my-lg-0">
-																																								<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-																																								<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
-																																							</form> #}
+																																																																																																																					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+																																																																																																																					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+																																																																																																																				</form> #}
 							<li class="nav-item active">
 								<a class="nav-link" name="disabled">Bienvenido/a
 									<span>{{ app.user.nick }}</span>
@@ -108,13 +108,13 @@
 
 						<ul class="list-unstyled">
 							<li>
-								<a href="#" target="_blank">El Mundo</a>
+								<a href="https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml" target="_blank">El Mundo | Portada</a>
 							</li>
 							<li>
-								<a href="#" target="_blank">El País</a>
+								<a href="https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml" target="_blank">El Mundo | Deportes</a>
 							</li>
 							<li>
-								<a href="#" target="_blank">New York Times</a>
+								<a href="https://e00-elmundo.uecdn.es/elmundomotor/rss/portada.xml" target="_blank">El Mundo | Motor</a>
 							</li>
 						</ul>
 
@@ -134,10 +134,10 @@
 
 						<ul class="list-unstyled">
 							<li>
-								<a href="#" target="_blank">Quiénes somos</a>
+								<a href="https://sites.google.com/uoc.edu/p3-10220-1-grupo-3j-f/los-miembros-del-equipo" target="_blank">Quiénes somos</a>
 							</li>
 							<li>
-								<a href="#" target="_blank">Google sites del proyecto</a>
+								<a href="https://sites.google.com/uoc.edu/p3-10220-1-grupo-3j-f/presentaci%C3%B3n-del-proyecto" target="_blank">Google sites del proyecto</a>
 							</li>
 							<li>
 								<a href="" target="_blank">News & Fun en los medios</a>
@@ -157,16 +157,16 @@
 
 						<ul class="list-unstyled">
 							<li>
-								<a href="">Términos y condiciones de venta</a>
+								<a href="{{ path('terminos_y_condiciones') }}">Términos y condiciones de venta</a>
 							</li>
 							<li>
-								<a href="">Términos de uso</a>
+								<a href="{{ path('terminos_de_uso') }}">Términos de uso</a>
 							</li>
 							<li>
-								<a href="">Política de privacidad</a>
+								<a href="{{ path('politica_de_privacidad') }}">Política de privacidad</a>
 							</li>
 							<li>
-								<a href="">Política de cookies</a>
+								<a href="{{ path('politica_de_cookies') }}">Política de cookies</a>
 							</li>
 						</ul>
 
@@ -188,7 +188,7 @@
 					</a>
 				</li>
 				<li class="list-inline-item">
-					<a class="btn-floating btn-gplus mx-1" href="#" target="_blank"><img src="{{asset('assets/img/google-plus-3-96.png')}}" alt="">
+					<a class="btn-floating btn-gplus mx-1" href="https://sites.google.com/uoc.edu/p3-10220-1-grupo-3j-f/presentaci%C3%B3n-del-proyecto" target="_blank"><img src="{{asset('assets/img/google-plus-3-96.png')}}" alt="">
 					</a>
 				</li>
 				<li class="list-inline-item">
