@@ -86,47 +86,47 @@ class __TwigTemplate_066d3d1715d56a74b4e1dac4924c902a2fda3849ce85db63a065d84dd25
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
-        echo "<style></style>
+        echo "\t<style></style>
 
 
-<div class=\"row\">
-\t<div class=\"col-lg-8 offset-2\">
-\t\t<h1>Login</h1>
-\t\t";
+\t<div class=\"row\">
+\t\t<div class=\"col-lg-8 offset-2\">
+\t\t\t<h1>Login</h1>
+\t\t\t";
         // line 13
         if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 13, $this->source); })())) {
             // line 14
-            echo "\t\t<div class=\"alert alert-danger\">
-\t\t\t";
+            echo "\t\t\t\t<div class=\"alert alert-danger\">
+\t\t\t\t\t";
             // line 15
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_get_attribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 15, $this->source); })()), "messagekey", [], "any", false, false, false, 15), twig_get_attribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 15, $this->source); })()), "messageData", [], "any", false, false, false, 15), "security"), "html", null, true);
             echo "
-\t\t</div>
-\t\t";
+\t\t\t\t</div>
+\t\t\t";
         }
         // line 18
         echo "
-\t\t";
+\t\t\t";
         // line 20
-        echo "\t\t";
+        echo "\t\t\t";
         // line 23
         echo "
-\t\t<form action=\"";
+\t\t\t<form action=\"";
         // line 24
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
         echo "\" method=\"POST\">
-\t\t\t<div class=\"form-group\">
-\t\t\t\t<label for=\"username\">Email</label>
-\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"username\" aria-describedby=\"emailHelp\" name=\"_username\">
-\t\t\t</div>
-\t\t\t<div class=\"form-group\">
-\t\t\t\t<label for=\"password\">Contraseña</label>
-\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" name=\"_password\">
-\t\t\t</div>
-\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Entrar</button>
-\t\t</form>
+\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t<label for=\"username\">Email</label>
+\t\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"username\" aria-describedby=\"emailHelp\" name=\"_username\" required>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t<label for=\"password\">Contraseña</label>
+\t\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" name=\"_password\" required>
+\t\t\t\t</div>
+\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Entrar</button>
+\t\t\t</form>
+\t\t</div>
 \t</div>
-</div>
 
 ";
         
@@ -160,37 +160,38 @@ class __TwigTemplate_066d3d1715d56a74b4e1dac4924c902a2fda3849ce85db63a065d84dd25
 {% endblock %}
 
 {% block body %}
-<style></style>
+\t<style></style>
 
 
-<div class=\"row\">
-\t<div class=\"col-lg-8 offset-2\">
-\t\t<h1>Login</h1>
-\t\t{% if error %}
-\t\t<div class=\"alert alert-danger\">
-\t\t\t{{ error.messagekey|trans(error.messageData, 'security') }}
+\t<div class=\"row\">
+\t\t<div class=\"col-lg-8 offset-2\">
+\t\t\t<h1>Login</h1>
+\t\t\t{% if error %}
+\t\t\t\t<div class=\"alert alert-danger\">
+\t\t\t\t\t{{ error.messagekey|trans(error.messageData, 'security') }}
+\t\t\t\t</div>
+\t\t\t{% endif %}
+
+\t\t\t{# el usuario identificado #}
+\t\t\t{# {% if app.user %}
+\t\t\t\t\t\t\t\t\t\t\t\t{{dump(app.user)}}
+\t\t\t\t\t\t\t\t\t\t\t{% endif %} #}
+
+\t\t\t<form action=\"{{ path('login') }}\" method=\"POST\">
+\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t<label for=\"username\">Email</label>
+\t\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"username\" aria-describedby=\"emailHelp\" name=\"_username\" required>
+\t\t\t\t</div>
+\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t<label for=\"password\">Contraseña</label>
+\t\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" name=\"_password\" required>
+\t\t\t\t</div>
+\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Entrar</button>
+\t\t\t</form>
 \t\t</div>
-\t\t{% endif %}
-
-\t\t{# el usuario identificado #}
-\t\t{# {% if app.user %}
-\t\t\t\t\t\t\t\t\t{{dump(app.user)}}
-\t\t\t\t\t\t\t\t{% endif %} #}
-
-\t\t<form action=\"{{ path('login') }}\" method=\"POST\">
-\t\t\t<div class=\"form-group\">
-\t\t\t\t<label for=\"username\">Email</label>
-\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"username\" aria-describedby=\"emailHelp\" name=\"_username\">
-\t\t\t</div>
-\t\t\t<div class=\"form-group\">
-\t\t\t\t<label for=\"password\">Contraseña</label>
-\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" name=\"_password\">
-\t\t\t</div>
-\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Entrar</button>
-\t\t</form>
 \t</div>
-</div>
 
-{% endblock %}", "user/login.html.twig", "C:\\wamp64\\www\\news-and-fun\\templates\\user\\login.html.twig");
+{% endblock %}
+", "user/login.html.twig", "C:\\wamp64\\www\\news-and-fun\\templates\\user\\login.html.twig");
     }
 }
