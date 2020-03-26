@@ -1,33 +1,61 @@
 {% if categories|length >= 1 %}
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th scope="col">Nombre</th>
-				<th scope="col"></th>
-				<th scope="col"></th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for category in categories %}
-				<tr>
-					<th scope="row">
-						<a title="Abrir" href="{{ path('category_detail', {'id':category.id}) }}">{{ category.name }}</a>
-					</th>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Nombre</th>
+			<th scope="col"></th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for category in categories %}
+		<tr>
+			<th scope="row">
+				<a title="Abrir" href="{{ path('category_detail', {'id':category.id}) }}">{{ category.name }}</a>
+			</th>
 
-					{% if app.user != null and category.user.id == app.user.id %}
-						<td>
-							<a href="{{ path('category_edit', {'id':category.id}) }}">Editar</a>
-						</td>
-						<td>
-							<a href="{{ path('category_delete', {'id':category.id}) }}">Borrar</a>
-						</td>
-					{% endif %}
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+			{% if app.user != null and category.user.id == app.user.id %}
+			<td>
+				<a class="btn btn-sm btn-outline-primary" href="{{ path('category_edit', {'id':category.id}) }}">Editar</a>
+			</td>
+			<td>
+				{# <a href="{{ path('category_delete', {'id':category.id}) }}">Borrar</a> #}
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+					data-target="#modal-{{category.id}}"> Borrar
+				</button>
+				<!-- Modal -->
+				<div class="modal fade" id="modal-{{category.id}}" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Confirmación necesaria</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								Se eliminará definitivamente esta categoría: <strong>{{ category.name }}</strong> y sus
+								suscripciones.<br>
+								¿Desea continuar?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+								{# <button type="button" class="btn btn-primary">Save changes</button> #}
+								<a class="btn btn-danger ml-5" href="{{ path('category_delete', {'id':category.id}) }}">Borrar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
 {% else %}
-	<p>
-		<strong>No tienes suscripciones registradas</strong>
-	</p>
+<p class="mt-3">
+	<strong>No tienes suscripciones registradas</strong>
+</p>
 {% endif %}
