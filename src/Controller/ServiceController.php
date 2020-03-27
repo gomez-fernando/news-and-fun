@@ -151,4 +151,9 @@ class ServiceController extends AbstractController
     {
         return $this->render('legal/politica_de_cookies.html.twig');
     }
+
+    public function medios()
+    {
+        return $this->render('legal/medios.html.twig');
+    }
 }

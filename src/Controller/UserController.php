@@ -152,11 +152,4 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('logout');
     }
-
-    // public function reset()
-    // {
-    //     $user = new User();
-    //     dd($user);
-    //     return $this->render('service/index.html.twig');
-    // }
 }

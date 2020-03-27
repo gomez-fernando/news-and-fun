@@ -66,7 +66,7 @@ profile_edit:
   path: /editar-perfil
   controller: App\Controller\UserController::profile_edit
 
-# legal
+# legal y medios
 terminos_y_condiciones:
   path: /terminos-y-condiciones
   controller: App\Controller\ServiceController::terminosYCondiciones
@@ -82,7 +82,11 @@ politica_de_privacidad:
 politica_de_cookies:
   path: /politica-de-cookies
   controller: App\Controller\ServiceController::politicaDeCookies
-# end legal
+
+medios:
+  path: /en-los-medios
+  controller: App\Controller\ServiceController::medios
+# end legal y medios
 
 login:
   path: /login
