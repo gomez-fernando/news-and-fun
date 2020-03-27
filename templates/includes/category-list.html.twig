@@ -10,9 +10,10 @@
 	<tbody>
 		{% for category in categories %}
 		<tr>
-			<th scope="row">
-				<a title="Abrir" href="{{ path('category_detail', {'id':category.id}) }}">{{ category.name }}</a>
-			</th>
+			<td>
+				{# <a title="Abrir" href="{{ path('category_detail', {'id':category.id}) }}">{{ category.name }}</a> #}
+				{{ category.name }}
+			</td>
 
 			{% if app.user != null and category.user.id == app.user.id %}
 			<td>

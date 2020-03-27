@@ -147,6 +147,16 @@ class UserController extends AbstractController
         $em->remove($user);
         $em->flush();
 
-        return $this->redirectToRoute('login');
+        $user->setId(0);
+        // dd($user);
+
+        return $this->redirectToRoute('logout');
     }
+
+    // public function reset()
+    // {
+    //     $user = new User();
+    //     dd($user);
+    //     return $this->render('service/index.html.twig');
+    // }
 }

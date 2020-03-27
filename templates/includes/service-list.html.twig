@@ -13,7 +13,7 @@
 		{% for service in services %}
 		<tr>
 			<th scope="row">
-				<a title="Abrir" href="{{ path('service_detail', {'id':service.id}) }}">{{ service.name }}</a>
+				{{ service.name }}
 			</th>
 			<td>
 				{{ service.category.name }}

@@ -91,6 +91,10 @@ login:
 logout:
   path: /logout
 
+# reset:
+#   path: /reset
+#   controller: App\Controller\UserController::reset
+
 user_delete:
   path: /darse-de-baja
   controller: App\Controller\UserController::delete
