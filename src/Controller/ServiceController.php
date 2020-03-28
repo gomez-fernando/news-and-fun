@@ -29,6 +29,24 @@ class ServiceController extends AbstractController
             ['name' => 'ASC']
         );
 
+        $em = $this->getDoctrine()->getManager();
+        // $countries = $em->getRepository(Service::class)->findAll(['distinct' => 'country', 'limit' => 1]);
+
+        $conn = $this->getDoctrine()->getManager()->getConnection();
+
+        $sql = 'SELECT distinct country FROM services ORDER BY country ASC';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['country' => 'España']);
+
+        // returns an array of arrays (i.e. a raw data set)
+        $countries = $stmt->fetchAll();
+
+        // $countries = $service_repo->findBy(
+        //     ['country' => 'España']
+        // );
+
+        // dd($countries);
+
         $category_repo = $this->getDoctrine()->getRepository(Category::class);
         // $categorys = $category_repo->findAll();
         $categories = $category_repo->findBy(
@@ -39,6 +57,7 @@ class ServiceController extends AbstractController
         return $this->render('service/services.html.twig', [
             'services' => $services,
             'categories' => $categories,
+            'countries' => $countries
         ]);
     }
     
@@ -235,6 +254,30 @@ class ServiceController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('my_services');
+    }
+
+    public function byCountry(UserInterface $user, string $country)
+    {
+        // dd($country);
+
+        $service_repo = $this->getDoctrine()->getRepository(Service::class);
+        // $services = $service_repo->findAll();
+        $services = $service_repo->findBy([
+            'user' => $user->getId(),
+            'country' => $country,
+        ]);
+
+        // dd($services);
+        // $servicesByCategory = $services->findBy(['category' => $category->getId()]);
+
+        // $category_repo = $this->getDoctrine()->getRepository(Category::class);
+        // // $categorys = $category_repo->findAll();
+        // $categories = $category_repo->findBy(['user' => $user->getId()]);
+
+        return $this->render('service/by_country.html.twig', [
+            'services' => $services,
+            'country' => $country
+        ]);
     }
     
     public function terminosYCondiciones()

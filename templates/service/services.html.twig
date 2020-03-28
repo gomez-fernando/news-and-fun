@@ -91,7 +91,7 @@
 				</select>
 				<input
 					onclick="location=document.categoriesform.menu.options[document.categoriesform.menu.selectedIndex].value;"
-					type="button" value="Ir" /><span style="line-height: 1.3em;"> </span>
+					type="button" class="btn btn-sm btn-outline-primary px-3 mt-2" value="Ir" />
 			</div>
 		</form>
 
@@ -101,17 +101,24 @@
 
 	<div class="col-10 offset-1">
 		<h2>O elijo un país</h2>
+		{% for country in countries %}
+		{# Key : {{ key }}
+					Value : {{ value }} #}
+		{{ country.country }}
+		{% endfor %}
 		<form name="countriesform">
 			<div class="form-group">
 				<label for=""></label>
 				<select class="form-control" name="menu">
 					<option value="">Seleccionar</option>
-					{% for category in categories %}
-					<option value="{{ path('by_category', {'id':category.id}) }}">{{ category.name }}</option>
+
+					{% for country in countries %}
+					<option value="{{ path('by_country', {'country':country.country}) }}">{{ country.country }}</option>
 					{% endfor %}
+
 				</select>
 				<input onclick="location=document.countriesform.menu.options[document.countriesform.menu.selectedIndex].value;"
-					type="button" value="Ir" /><span style="line-height: 1.3em;"> </span>
+					type="button" class="btn btn-sm btn-outline-primary px-3 mt-2" value="Ir" />
 			</div>
 		</form>
 

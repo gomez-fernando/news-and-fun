@@ -47,6 +47,10 @@ by_category:
   path: /por-categoria/{id}
   controller: App\Controller\CategoryController::byCategory
 
+by_country:
+  path: /por-pais/{country}
+  controller: App\Controller\ServiceController::byCountry
+
 category_creation:
   path: /nueva-categoria
   controller: App\Controller\CategoryController::creation

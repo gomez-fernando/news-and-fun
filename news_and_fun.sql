@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `services` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_service_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 
 --
@@ -54,6 +54,7 @@ INSERT INTO `services` (`id`, `user_id`, `category_id`, `name`, `country`, `url_
 (1, 1, 1, 'El Mundo. Ultima hora', 'España', 'https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
 (2, 1, 2, 'El Mundo. Deportes', 'España',  'https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
 (3, 1, 3, 'Motor', 'España',  'https://e00-elmundo.uecdn.es/elmundomotor/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
+(4, 1, 1, 'Noticias internacionales', 'Internacional',  'https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
 (5, 2, 4, 'del usuario 2', 'España',  'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
 (6, 3, 5, 'del usuario 3', 'España',  'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
 
