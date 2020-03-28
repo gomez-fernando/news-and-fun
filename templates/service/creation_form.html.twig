@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% if edit is defined %}
+Editar suscripción
+{% else %}
+Añadir suscripción
+{% endif %}
+{% endblock %}
+
+<div class="example-wrapper">
+  <h1 class="mt-2">Editar perfil</h1>
+  <form action="{{ path('profile_edit') }}" method="POST">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" value="{{ app.user.name }}" class="form-control" id="name" aria-describedby="name" name="_name"
+        required>
+    </div>
+    <div class="form-group">
+      <label for="surname">Apellidos</label>
+      <input type="text" value="{{ app.user.surname }}" class="form-control" id="surname" aria-describedby="surname"
+        name="_surname" required>
+    </div>
+    <div class="form-group">
+      <label for="nick">Nick</label>
+      <input type="text" value="{{ app.user.nick }}" class="form-control" id="nick" aria-describedby="nick" name="_nick"
+        required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" value="{{ app.user.email }}" class="form-control" id="email" aria-describedby="emailHelp"
+        name="_email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" value="" class="form-control" id="password" aria-describedby="password" name="_password">
+    </div>
+    <button type="submit" class="btn btn-primary mr-5">Guardar cambios</button>
+
+
+
+</div>
+{% endblock %}
