@@ -28,7 +28,6 @@ class Category
      */
     private $name;
 
-    
     /**
      * @var \User
      *

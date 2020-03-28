@@ -4,22 +4,26 @@
 		<tr>
 			<th scope="col">Nombre</th>
 			<th scope="col">Categoría</th>
-			<th scope="col">Descripción</th>
-			<th scope="col"></th>
-			<th scope="col"></th>
+			<th scope="col">País</th>
+			<th scope="col">Ver</th>
+			<th scope="col">Editar</th>
+			<th scope="col">Borrar</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for service in services %}
 		<tr>
 			<th scope="row">
-				{{ service.name }}
+				<a href="{{ path('service_detail', {'id':service.id}) }}">{{ service.name }}</a>
 			</th>
 			<td>
 				{{ service.category.name }}
 			</td>
 			<td>
-				<a href="{{ path('service_detail', {'id':service.id}) }}">{{ service.description }}</a>
+				{{ service.country }}
+			</td>
+			<td>
+				<a class="btn btn-sm btn-outline-success" href="{{ path('service_detail', {'id':service.id}) }}">Ver</a>
 			</td>
 			{# <td><a href="{{ service.urlService }}">Abrir</a></td> #}
 
@@ -32,8 +36,7 @@
 
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
-					data-target="#modal-{{service.id}}">
-					Borrar
+					data-target="#modal-{{service.id}}"> Borrar
 				</button>
 				<!-- Modal -->
 				<div class="modal fade" id="modal-{{service.id}}" tabindex="-1" role="dialog"
@@ -47,7 +50,8 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								Se eliminará definitivamente esta suscripción: <strong>{{ service.name }}</strong>.<br>
+								Se eliminará definitivamente esta suscripción:
+								<strong>{{ service.name }}</strong>.<br>
 								¿Desea continuar?
 							</div>
 							<div class="modal-footer">
