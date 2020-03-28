@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block body %}
-	<style></style>
 
 
 	<div class="row">
@@ -18,8 +17,8 @@
 
 			{# el usuario identificado #}
 			{# {% if app.user %}
-												{{dump(app.user)}}
-											{% endif %} #}
+															{{dump(app.user)}}
+														{% endif %} #}
 
 			<form action="{{ path('login') }}" method="POST">
 				<div class="form-group">

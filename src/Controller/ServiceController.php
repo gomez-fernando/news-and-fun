@@ -54,33 +54,76 @@ class ServiceController extends AbstractController
         ]);
     }
 
+    // public function creation(Request $request, UserInterface $user)
+    // {
+    //     $service = new Service();
+    //     $form = $this->createForm(ServiceType::class, $service);
+
+    //     $form->handleRequest($request);
+
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         // var_dump($service);
+    //         $service->setCreatedAt(new \Datetime('now'));
+    //         // var_dump($user);
+    //         $service->setUser($user);
+    //         // var_dump($service);
+    //         $em = $this->getDoctrine()->getManager();
+    //         $em->persist($service);
+    //         $em->flush();
+
+    //         return $this->redirectToRoute('my_services');
+
+    //         // return $this->redirect(
+    //         //     $this->generateUrl('service_detail', ['id' => $service->getId()])
+    //         // );
+    //     }
+
+    //     return $this->render('service/creation.html.twig', [
+    //         'form' => $form->createView()
+    //     ]);
+    // }
+
+    public function creationView(UserInterface $user)
+    {
+        $category_repo = $this->getDoctrine()->getRepository(Category::class);
+        // $categorys = $category_repo->findAll();
+        $categories = $category_repo->findBy(
+            ['user' => $user->getId()],
+            ['name' => 'ASC']
+        );
+
+        return $this->render('service/creation_form.html.twig', [
+            'categories' => $categories
+        ]);
+    }
+
     public function creation(Request $request, UserInterface $user)
     {
+        $category_repo = $this->getDoctrine()->getRepository(Category::class);
+        // $services = $service_repo->findAll();
+        $category = $category_repo->findBy(['id' => $request->get("_category")]);
+
+        // dd($category);
+        // dd($request->get("_category"));
         $service = new Service();
-        $form = $this->createForm(ServiceType::class, $service);
+        // dd($service);
 
-        $form->handleRequest($request);
+        $service->setName($request->get("_name"));
+        $service->setDescription($request->get("_description"));
+        $service->setCategory($category[0]);
+        $service->setCountry($request->get("_country"));
+        $service->setUrlService($request->get("_url_service"));
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // var_dump($service);
-            $service->setCreatedAt(new \Datetime('now'));
-            // var_dump($user);
-            $service->setUser($user);
-            // var_dump($service);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($service);
-            $em->flush();
+        // var_dump($service);
+        $service->setCreatedAt(new \Datetime('now'));
+        // var_dump($user);
+        $service->setUser($user);
+        // dd($service);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($service);
+        $em->flush();
 
-            return $this->redirectToRoute('my_services');
-
-            // return $this->redirect(
-            //     $this->generateUrl('service_detail', ['id' => $service->getId()])
-            // );
-        }
-
-        return $this->render('service/creation.html.twig', [
-            'form' => $form->createView()
-        ]);
+        return $this->redirectToRoute('my_services');
     }
 
     public function myServices(UserInterface $user)

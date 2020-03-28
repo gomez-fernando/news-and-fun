@@ -14,8 +14,13 @@ service_detail:
   path: /servicio/{id}
   controller: App\Controller\ServiceController::detail
 
-service_creation:
+# nuevo service cration
+service_creation_form:
   path: /nueva-suscripcion
+  controller: App\Controller\ServiceController::creationView
+
+service_creation:
+  path: /crear-suscripcion
   controller: App\Controller\ServiceController::creation
 
 my_services:
