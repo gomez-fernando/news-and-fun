@@ -13,8 +13,10 @@ Añadir suscripción
 <div class="example-wrapper">
   {% if edit is defined %}
   <h1 class="mt-2">Editar suscripción</h1>
+  <form action="{{ path('service_edit') }}" method="POST"></form>
   {% else %}
   <h1 class="mt-2">Añadir suscripción</h1>
+  <form action="{{ path('service_creation') }}" method="POST"></form>
   {% endif %}
 
   <form action="{{ path('service_creation') }}" method="POST">
@@ -46,7 +48,7 @@ Añadir suscripción
         name="_url_service" required>
     </div>
     <button type="submit" class="btn btn-primary mr-5">Guardar</button>
-
+  </form>
 
 
 </div>
