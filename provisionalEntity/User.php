@@ -76,7 +76,7 @@ class User implements UserInterface
      */
     private $createdAt;
 
-        
+    
     // para establecer las relaciones
     
     /**

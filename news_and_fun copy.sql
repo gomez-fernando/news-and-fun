@@ -37,26 +37,24 @@ CREATE TABLE IF NOT EXISTS `services` (
   `user_id` int(255) NOT NULL,
   `category_id` int(255) NOT NULL,
   `name` varchar(150) NOT NULL,
-  `country` varchar(150) NOT NULL,
   `url_service` varchar(500) NOT NULL,
   `description` varchar(520) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_service_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 
 --
 -- Volcado de datos para la tabla `services`
 --
 
-INSERT INTO `services` (`id`, `user_id`, `category_id`, `name`, `country`, `url_service`, `description`, `created_at`) VALUES
-(1, 1, 1, 'El Mundo. Ultima hora', 'España', 'https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
-(2, 1, 2, 'El Mundo. Deportes', 'España',  'https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
-(3, 1, 3, 'Motor', 'España',  'https://e00-elmundo.uecdn.es/elmundomotor/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
-(4, 1, 1, 'Noticias internacionales', 'Internacional',  'https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
-(5, 2, 4, 'del usuario 2', 'España',  'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(6, 3, 5, 'del usuario 3', 'España',  'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
+INSERT INTO `services` (`id`, `user_id`, `category_id`, `name`, `url_service`, `description`, `created_at`) VALUES
+(1, 1, 1, 'El Mundo. Ultima hora', 'https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
+(2, 1, 2, 'El Mundo. Deportes', 'https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
+(3, 1, 3, 'Motor', 'https://e00-elmundo.uecdn.es/elmundomotor/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
+(5, 2, 4, 'del usuario 2', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
+(6, 3, 5, 'del usuario 3', 'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
 
 -- --------------------------------------------------------
 

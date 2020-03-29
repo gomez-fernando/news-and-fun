@@ -14,21 +14,30 @@ service_detail:
   path: /servicio/{id}
   controller: App\Controller\ServiceController::detail
 
-service_creation:
+# nuevo service cration
+service_creation_form:
   path: /nueva-suscripcion
+  controller: App\Controller\ServiceController::creationView
+
+service_creation:
+  path: /crear-suscripcion
   controller: App\Controller\ServiceController::creation
 
-my_services:
-  path: /mis-suscripciones
-  controller: App\Controller\ServiceController::myServices
+service_edition_form:
+  path: /editar-suscripcion{id}
+  controller: App\Controller\ServiceController::editionView
 
 service_edit:
-  path: /editar-suscripcion/{id}
+  path: /guardar-cambio-suscripcion
   controller: App\Controller\ServiceController::edit
 
 service_delete:
   path: /borrar-suscripcion/{id}
   controller: App\Controller\ServiceController::delete
+
+my_services:
+  path: /mis-suscripciones
+  controller: App\Controller\ServiceController::myServices
 
 category_detail:
   path: /categoria/{id}
@@ -37,6 +46,10 @@ category_detail:
 by_category:
   path: /por-categoria/{id}
   controller: App\Controller\CategoryController::byCategory
+
+by_country:
+  path: /por-pais/{country}
+  controller: App\Controller\ServiceController::byCountry
 
 category_creation:
   path: /nueva-categoria

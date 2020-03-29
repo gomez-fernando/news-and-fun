@@ -31,13 +31,6 @@ class Service
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=150, nullable=false)
-     */
-    private $country;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="url_service", type="string", length=500, nullable=false)
      */
     private $urlService;
@@ -56,7 +49,7 @@ class Service
      */
     private $createdAt;
 
-        
+    
     /**
      * @var \Category
      *
@@ -90,18 +83,6 @@ class Service
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
 
         return $this;
     }
