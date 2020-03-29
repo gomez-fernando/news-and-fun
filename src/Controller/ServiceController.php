@@ -34,7 +34,7 @@ class ServiceController extends AbstractController
 
         $conn = $this->getDoctrine()->getManager()->getConnection();
 
-        $sql = 'SELECT distinct country FROM services ORDER BY country ASC';
+        $sql = 'SELECT distinct country FROM services where user_id = ' . $userId . ' ORDER BY country ASC';
         $stmt = $conn->prepare($sql);
         $stmt->execute(['country' => 'España']);
 
