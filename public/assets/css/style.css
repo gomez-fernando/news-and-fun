@@ -47,6 +47,9 @@ img {
 .carousel-indicators li {
   background-color: rgba(54, 227, 18, 0.5);
 } */
+#navbarSupportedContent {
+  display: flex;
+}
 
 @media screen and (min-width: 576px) {
   .navbar-brand img {
