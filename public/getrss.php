@@ -17,11 +17,11 @@ $xmlDoc = new DOMDocument();
 $xmlDoc->load($xml);
  
 //obtener elementos desde "<channel>"
-$channel=$xmlDoc->getElementsByTagName('channel')->item(0);
-$channel_title = $channel->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
-$channel_link = $channel->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
-$channel_desc = $channel->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
-$channel_url = $channel->getElementsByTagName('url')->item(0)->childNodes->item(0)->nodeValue;
+// $channel=$xmlDoc->getElementsByTagName('channel')->item(0);
+// $channel_title = $channel->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
+// $channel_link = $channel->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
+// $channel_desc = $channel->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
+// $channel_url = $channel->getElementsByTagName('url')->item(0)->childNodes->item(0)->nodeValue;
  
 //mostrar la salida de los elementos del "<channel>"
  

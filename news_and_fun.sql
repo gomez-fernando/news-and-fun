@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `services` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_service_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 
 --
@@ -51,12 +51,14 @@ CREATE TABLE IF NOT EXISTS `services` (
 --
 
 INSERT INTO `services` (`id`, `user_id`, `category_id`, `name`, `country`, `url_service`, `description`, `created_at`) VALUES
-(1, 1, 1, 'El Mundo. Ultima hora', 'España', 'https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
-(2, 1, 2, 'El Mundo. Deportes', 'España',  'https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
-(3, 1, 3, 'Motor', 'España',  'https://e00-elmundo.uecdn.es/elmundomotor/rss/portada.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
-(4, 1, 1, 'Noticias internacionales', 'Internacional',  'https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml', 'descripción del sitio', '2020-03-04 21:13:36'),
-(5, 2, 4, 'del usuario 2', 'España',  'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36'),
-(6, 3, 5, 'del usuario 3', 'España',  'url del sitio', 'descripción del sitio', '2020-03-04 21:13:36');
+(1, 1, 1, 'El Mundo. Ultima hora', 'España', 'https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml', 'Noticias de última hora del periódico El Mundo. Portada', '2020-03-04 21:13:36'),
+(2, 1, 2, 'El Mundo. Deportes', 'España',  'https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml', 'Deportes. Portada del periódico El Mundo', '2020-03-04 21:13:36'),
+(3, 1, 3, 'Motor', 'España',  'https://e00-elmundo.uecdn.es/elmundomotor/rss/portada.xml', 'El mundo del motor. Sección del periódico El Mundo', '2020-03-04 21:13:36'),
+(4, 1, 1, 'Noticias int. El Mundo', 'Internacional',  'https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml', 'Portada. Noticias internacionales. Periódico El Mundo', '2020-03-04 21:13:36'),
+(5, 1, 1, 'Actualités Le Monde', 'Francia',  'https://www.lemonde.fr/rss/une.xml', 'Portada de noticias principales de Le Monde', '2020-03-04 21:13:36'),
+(6, 1, 1, 'Noticias int. Le Monde', 'Internacional',  'https://www.lemonde.fr/international/rss_full.xml', 'Portada de noticias internacionales de Le Monde', '2020-03-04 21:13:36'),
+(7, 1, 3, 'Cinéma', 'Francia',  'https://www.lemonde.fr/cinema/rss_full.xml', 'El mundo del cine. Sección de Le Monde', '2020-03-04 21:13:36'),
+(8, 1, 2, 'La une Sport', 'Francia',  'https://www.lemonde.fr/sport/rss_full.xml', 'Portada de noticias deportivas de Le Monde', '2020-03-04 21:13:36');
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `name` varchar(150) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_service_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 
 --
@@ -77,9 +79,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 INSERT INTO `categories` (`id`, `user_id`, `name`) VALUES
 (1, 1, 'Noticias'),
 (2, 1, 'Deportes'),
-(3, 1, 'Mis aficiones'),
-(4, 2, 'Mis aficiones user 2'),
-(5, 3, 'Mis aficiones user 3');
+(3, 1, 'Mis aficiones');
 
 -- --------------------------------------------------------
 
@@ -98,16 +98,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `role`, `name`, `surname`, `nick`, `email`, `password`, `created_at`) VALUES
-(1, 'ROLE_USER', 'Javier', 'Estrada', '@user1', 'user1@user1.com', '$2y$12$/KpQiMmVlvKXFTCZOQxtX.rilC7/bAONlGKtJ7vZJWv/KrM9EwSbu', '2020-03-04 21:13:35'),
-(2, 'ROLE_USER', 'Miguel', 'Ruiz', '@user2', 'user2@user2.com', '$2y$12$/KpQiMmVlvKXFTCZOQxtX.rilC7/bAONlGKtJ7vZJWv/KrM9EwSbu', '2020-03-04 21:13:35'),
-(3, 'ROLE_USER', 'Alvaro', 'Miranda', '@user3', 'user3@user3.com', '$2y$12$/KpQiMmVlvKXFTCZOQxtX.rilC7/bAONlGKtJ7vZJWv/KrM9EwSbu', '2020-03-04 21:13:36');
+(1, 'ROLE_USER', 'Javier', 'Estrada', '@user1', 'user1@user1.com', '$2y$12$/KpQiMmVlvKXFTCZOQxtX.rilC7/bAONlGKtJ7vZJWv/KrM9EwSbu', '2020-03-04 21:13:35');
 
 --
 -- Filtros para la tabla `services`
