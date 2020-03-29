@@ -22,6 +22,7 @@ class ServiceController extends AbstractController
 
     public function services(UserInterface $user)
     {
+        $userId = $user->getId();
         $service_repo = $this->getDoctrine()->getRepository(Service::class);
         // $services = $service_repo->findAll();
         $services = $service_repo->findBy(
