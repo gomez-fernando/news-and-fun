@@ -22,6 +22,7 @@ class ServiceController extends AbstractController
 
     public function services(UserInterface $user)
     {
+        $userId = $user->getId();
         $service_repo = $this->getDoctrine()->getRepository(Service::class);
         // $services = $service_repo->findAll();
         $services = $service_repo->findBy(
@@ -34,7 +35,7 @@ class ServiceController extends AbstractController
 
         $conn = $this->getDoctrine()->getManager()->getConnection();
 
-        $sql = 'SELECT distinct country FROM services ORDER BY country ASC';
+        $sql = 'SELECT distinct country FROM services where user_id = ' . $userId . ' ORDER BY country ASC';
         $stmt = $conn->prepare($sql);
         $stmt->execute(['country' => 'España']);
 
