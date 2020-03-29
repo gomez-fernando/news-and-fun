@@ -48,7 +48,8 @@ img {
   background-color: rgba(54, 227, 18, 0.5);
 } */
 #navbarSupportedContent {
-  display: flex;
+  /* display: flex;
+  float: right; */
 }
 
 @media screen and (min-width: 576px) {
