@@ -305,4 +305,9 @@ class ServiceController extends AbstractController
     {
         return $this->render('legal/medios.html.twig');
     }
+
+    public function youtube()
+    {
+        return $this->render('legal/youtube.html.twig');
+    }
 }

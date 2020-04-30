@@ -99,6 +99,10 @@ politica_de_cookies:
 medios:
   path: /en-los-medios
   controller: App\Controller\ServiceController::medios
+
+youtube:
+  path: /youtube
+  controller: App\Controller\ServiceController::youtube
 # end legal y medios
 
 login:

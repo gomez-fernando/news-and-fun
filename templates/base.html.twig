@@ -31,7 +31,7 @@
 
 						{% if app.user != null %}
 							{# <form class="form-inline my-2 my-lg-0">
-																																																																																																																																								</form> #}
+																																																																																																																																															</form> #}
 							<li class="nav-item active">
 								<a class="nav-link text-welcome" name="disabled">Bienvenido/a
 									<span>{{ app.user.nick }}</span>
@@ -110,7 +110,7 @@
 							</li>
 							<li>
 								<a href="https://www.lemonde.fr/actualite-medias/article/2019/08/12/les-flux-rss-du-monde-fr_5498778_3236.html" target="_blank">Catálogo RSS |
-																																			Le Monde</a>
+																																												Le Monde</a>
 							</li>
 							<li>
 								<a href="https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml" target="_blank">RSS Portada | El Mundo</a>
@@ -183,7 +183,7 @@
 			<!-- Redes sociales -->
 			<ul class="list-unstyled list-inline text-center">
 				<li class="list-inline-item">
-					<a class="btn-floating btn-tw mx-1" href="#" target="_blank"><img src="{{asset('assets/img/youtube-3-96.png')}}" alt="">
+					<a class="btn-floating btn-tw mx-1" href="{{ path('youtube') }}" target="_blank"><img src="{{asset('assets/img/youtube-3-96.png')}}" alt="">
 					</a>
 				</li>
 				<li class="list-inline-item">
@@ -191,7 +191,7 @@
 					</a>
 				</li>
 				<li class="list-inline-item">
-					<a class="btn-floating btn-tw mx-1" href="#" target="_blank"><img src="{{asset('assets/img/youtube-3-96.png')}}" alt="">
+					<a class="btn-floating btn-tw mx-1" href="{{ path('youtube') }}" target="_blank"><img src="{{asset('assets/img/youtube-3-96.png')}}" alt="">
 					</a>
 				</li>
 			</ul>
