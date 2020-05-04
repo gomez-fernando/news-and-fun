@@ -100,3 +100,8 @@ footer a:visited {
 .redes-sociales img:hover {
   transform: scale(1.2);
 }
+
+.bg-light,
+footer {
+  background: linear-gradient(35deg, #ffb064, #f58c2a) !important;
+}
