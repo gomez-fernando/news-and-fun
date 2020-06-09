@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Por categorías
+{% endblock %}
+
+{% block body %}
+	<div class="" id="index">
+		<div class="col-10 offset-1">
+			<h2>Categoría:
+				{{ category_name }}
+			</h2>
+			<hr class="divider">
+			<h3>Suscripciones</h3>
+		</div>
+		<script>
+			function showRSS(str) {
+if (str.length == 0) {
+document.getElementById("rssOutput").innerHTML = "";
+return;
+}
+// El objeto XMLHttpRequest se usa para intercambiar datos con un servidor.
+if (window.XMLHttpRequest) { // código para IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp = new XMLHttpRequest();
+} else { // código para IE6, IE5
+xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+// Cuando se envía una petición a un servidor y queremos realizar algunas acciones sobre la base de la respuesta se
+// utiliza el evento onreadystatechange y se dispara cada vez que cambia el readyState.
+xmlhttp.onreadystatechange = function () {
+if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { // getElementById sirve para obtener el elemento con el ID especificado:
+document.getElementById("rssOutput").innerHTML = xmlhttp.responseText;
+// Si la respuesta del servidor no es XML, se utiliza la propiedad responseText.
+// La propiedad responseText devuelve la respuesta como una cadena.
+}
+}
+// Para enviar una petición a un servidor, se utiliza el open() y send() métodos del objeto XMLHttpRequest:
+// GET es más simple y más rápido que POST, y se puede utilizar en la mayoría de los casos.
+// Aun que POST es mucho más rápido y seguro
+xmlhttp.open("GET", "{{ asset('getrss.php?q=') }}" + str, true);
+xmlhttp.send();
+}
+		</script>
+
+		<div class="col-10 offset-1">
+			<form>
+				<div class="form-group">
+					<label for=""></label>
+					<select class="form-control" onchange="showRSS(this.value)" id="">
+						<option value="">Seleccionar</option>
+						{% for service in services %}
+							<option value="{{ service.urlservice }}">{{ service.name }}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</form>
+
+			<br>
+			<div id="rssOutput"></div>
+		</div>
+
+
+	</div>
+{% endblock %}

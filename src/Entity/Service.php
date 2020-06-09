@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Service
  *
- * @ORM\Table(name="services", indexes={@ORM\Index(name="fk_service_user", columns={"user_id"})})
+ * @ORM\Table(name="services", uniqueConstraints={@ORM\UniqueConstraint(name="uk_services_name", columns={"name"})}, indexes={@ORM\Index(name="fk_service_user", columns={"user_id"}), @ORM\Index(name="fk_service_category", columns={"category_id"})})
  * @ORM\Entity
  */
 class Service
@@ -22,32 +22,50 @@ class Service
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="name", type="string", nullable=false)
+     * @ORM\Column(name="name", type="string", length=150, nullable=false)
      */
     private $name;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="url_service", type="string", length=500, nullable=true)
+     * @ORM\Column(name="country", type="string", length=150, nullable=false)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_service", type="string", length=500, nullable=false)
      */
     private $urlService;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="description", type="string", length=520, nullable=true)
+     * @ORM\Column(name="description", type="string", length=520, nullable=false)
      */
     private $description;
 
     /**
-     * @var \DateTime|null
+     * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
+
+        
+    /**
+     * @var \Category
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="services")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    private $category;
 
     /**
      * @var \User
@@ -76,12 +94,24 @@ class Service
         return $this;
     }
 
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
     public function getUrlService(): ?string
     {
         return $this->urlService;
     }
 
-    public function setUrlService(?string $urlService): self
+    public function setUrlService(string $urlService): self
     {
         $this->urlService = $urlService;
 
@@ -93,7 +123,7 @@ class Service
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
@@ -105,9 +135,21 @@ class Service
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

@@ -24,6 +24,37 @@ footer {
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.8);
 }
+.btn-outline-primary:hover {
+  background-color: #f18a2a;
+  border-color: #ff7816;
+}
+#index img {
+  display: none;
+}
+.divider {
+  width: 40%;
+  background-color: #ffb064;
+}
+img {
+  max-width: 100%;
+}
+.text-welcome {
+  color: #107d01 !important;
+}
+/* .carousel-indicators .active {
+  background-color: orangered;
+}
+.carousel-indicators li {
+  background-color: rgba(54, 227, 18, 0.5);
+} */
+#navbarSupportedContent {
+  text-align: end;
+}
+
+.dropdown-menu.show {
+  float: right;
+  width: max-content;
+}
 
 @media screen and (min-width: 576px) {
   .navbar-brand img {
@@ -33,7 +64,7 @@ footer {
 
 @media screen and (min-width: 992px) {
   .dropdown-menu {
-    margin-left: -65px;
+    margin-left: -106px;
   }
 }
 
@@ -68,4 +99,9 @@ footer a:visited {
 
 .redes-sociales img:hover {
   transform: scale(1.2);
+}
+
+.bg-light,
+footer {
+  background: linear-gradient(35deg, #ffb064, #f58c2a) !important;
 }

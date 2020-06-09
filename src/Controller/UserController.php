@@ -4,13 +4,18 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
+// use App\Entity\Category;
+use App\Entity\Service;
 use App\Form\RegisterType;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Proxies\__CG__\App\Entity\Category;
+use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
@@ -107,5 +112,44 @@ class UserController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('services');
+    }
+
+    public function delete(UserInterface $user)
+    {
+        // die('hola');
+        if (!$user) {
+            return $this->redirectToRoute('login');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        // conseguir todas las categorias
+        $category_repo = $this->getDoctrine()->getRepository(Category::class);
+        // conseguir las categorias del usuario
+        $categories = $category_repo->findBy(['user' => $user->getId()]);
+        // dd($categories);
+        // recorrer las categorias
+        foreach ($categories as $category) {
+            // conseguir todos los servicios
+            $service_repo = $this->getDoctrine()->getRepository(Service::class);
+            // conseguir los servicios del usuario
+            $services = $service_repo->findBy(['user' => $user->getId()]);
+            // eliminar todos los servicios
+            foreach ($services as $service) {
+                $em->remove($service);
+                $em->flush();
+            }
+            // eliminamos la categoria
+            $em->remove($category);
+            $em->flush();
+        }
+        // eliminamos el usuario
+        $em->remove($user);
+        $em->flush();
+
+        $user->setId(0);
+        // dd($user);
+
+        return $this->redirectToRoute('logout');
     }
 }

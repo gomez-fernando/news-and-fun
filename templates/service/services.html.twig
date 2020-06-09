@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ver noticias
+{% endblock %}
+
+{% block body %}
+{% if app.user is defined or app.user != null %}
+<div class="" id="index">
+	<div class="col-10 offset-1">
+		<h2 class="mt-3">Todas mis suscripciones alfabéticamente</h2>
+	</div>
+	<script>
+		function showRSS(str) {
+			if (str.length == 0) {
+				document.getElementById("rssOutput").innerHTML = "";
+				return;
+			}
+			// El objeto XMLHttpRequest se usa para intercambiar datos con un servidor.
+			if (window.XMLHttpRequest) { // código para IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			} else { // código para IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			// Cuando se envía una petición a un servidor y queremos realizar algunas acciones sobre la base de la respuesta se
+			// utiliza el evento onreadystatechange y se dispara cada vez que cambia el readyState.
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { // getElementById sirve para obtener el elemento con el ID especificado:
+					document.getElementById("rssOutput").innerHTML = xmlhttp.responseText;
+					// Si la respuesta del servidor no es XML, se utiliza la propiedad responseText.
+					// La propiedad responseText devuelve la respuesta como una cadena.
+				}
+			}
+			// Para enviar una petición a un servidor, se utiliza el open() y send() métodos del objeto XMLHttpRequest:
+			// GET es más simple y más rápido que POST, y se puede utilizar en la mayoría de los casos.
+			// Aun que POST es mucho más rápido y seguro
+			xmlhttp.open("GET", "{{ asset('getrss.php?q=') }}" + str, true);
+			xmlhttp.send();
+		}
+	</script>
+
+	<div class="col-10 offset-1">
+		<form>
+			<div class="form-group">
+				<label for=""></label>
+				<select class="form-control" onchange="showRSS(this.value)" id="">
+					<option value="">Seleccionar</option>
+					{% for service in services %}
+					<option value="{{ service.urlservice }}">{{ service.name }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</form>
+
+		<br>
+		<div id="rssOutput"></div>
+	</div>
+
+	<!-- <div class="col-10 offset-1">
+		<h2>O elijo una categoría</h2>
+		{% if services|length >= 1 %}
+		<table class="table table-hover">
+			<tbody>
+				{% for category in categories %}
+				<tr>
+					<th>
+						<a title="Abrir" href="{{ path('by_category', {'id':category.id}) }}">{{ category.name }}</a>
+					</th>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<p>
+			<strong>No tienes suscripciones registradas</strong>
+		</p>
+		{% endif %}
+
+	</div> -->
+
+
+	<div class="col-10 offset-1">
+		<h2>O elijo una categoría</h2>
+		<form name="categoriesform">
+			<div class="form-group">
+				<label for=""></label>
+				<select class="form-control" name="menu">
+					<option value="">Seleccionar</option>
+					{% for category in categories %}
+					<option value="{{ path('by_category', {'id':category.id}) }}">{{ category.name }}</option>
+					{% endfor %}
+				</select>
+				<input
+					onclick="location=document.categoriesform.menu.options[document.categoriesform.menu.selectedIndex].value;"
+					type="button" class="btn btn-sm btn-outline-primary px-3 mt-2" value="Ir" />
+			</div>
+		</form>
+
+		<br>
+		<div id="rssOutput"></div>
+	</div>
+
+	<div class="col-10 offset-1">
+		<h2>O elijo un país</h2>
+		{% for country in countries %}
+		{# Key : {{ key }}
+					Value : {{ value }} #}
+		{{ country.country }}
+		{% endfor %}
+		<form name="countriesform">
+			<div class="form-group">
+				<label for=""></label>
+				<select class="form-control" name="menu">
+					<option value="">Seleccionar</option>
+
+					{% for country in countries %}
+					<option value="{{ path('by_country', {'country':country.country}) }}">{{ country.country }}</option>
+					{% endfor %}
+
+				</select>
+				<input onclick="location=document.countriesform.menu.options[document.countriesform.menu.selectedIndex].value;"
+					type="button" class="btn btn-sm btn-outline-primary px-3 mt-2" value="Ir" />
+			</div>
+		</form>
+
+		<br>
+		<div id="rssOutput"></div>
+	</div>
+
+</div>
+{% else %}
+<h2 class="mt-3">Debes iniciar sesión</h2>
+{% endif %}
+
+{% endblock %}
